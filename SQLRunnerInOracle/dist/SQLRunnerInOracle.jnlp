@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="SQLRunnerInOracle.jnlp">
+  <information>
+    <title>SQLRunnerInOracle</title>
+    <vendor>VSI SERVER</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="SQLRunnerInOracle.jar" size="24990" download="eager" />
+    <jar href="lib\SparseBitSet-1.2.jar" size="24510" download="eager" />
+    <jar href="lib\commons-codec-1.13.jar" size="344339" download="eager" />
+    <jar href="lib\commons-collections4-4.4.jar" size="751914" download="eager" />
+    <jar href="lib\commons-math3-3.6.1.jar" size="2213560" download="eager" />
+    <jar href="lib\ojdbc6.jar" size="2739670" download="eager" />
+    <jar href="lib\poi-4.1.2.jar" size="2915337" download="eager" />
+    <jar href="lib\poi-scratchpad-4.1.2.jar" size="1834265" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="sqlrunnerinoracle.SQLRunnerInOracle"  name="SQLRunnerInOracle" />
+  <update check="always"/>
+</jnlp>
