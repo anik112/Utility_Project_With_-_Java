@@ -6,6 +6,8 @@
 package sqlrunnerinoracle.view;
 
 import java.awt.Desktop;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import sqlrunnerinoracle.core.CoreSQLEditeor;
+import sqlrunnerinoracle.core.ProcessToMakeXlsFile;
 
 /**
  *
@@ -45,7 +48,7 @@ public class SQLEditeor extends javax.swing.JFrame {
         btnExportInXls = new javax.swing.JButton();
         lblShowselectedFileName = new javax.swing.JLabel();
         btnBrowseFile = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        progressBar = new javax.swing.JProgressBar();
         btnOpenFolder = new javax.swing.JButton();
         lblCopyRightTeg = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -93,6 +96,10 @@ public class SQLEditeor extends javax.swing.JFrame {
             }
         });
 
+        progressBar.setToolTipText("");
+        progressBar.setName(""); // NOI18N
+        progressBar.setStringPainted(true);
+
         btnOpenFolder.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         btnOpenFolder.setText("Open");
         btnOpenFolder.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
@@ -110,7 +117,7 @@ public class SQLEditeor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblShowselectedFileName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                         .addGap(0, 0, 0)
@@ -130,7 +137,7 @@ public class SQLEditeor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblShowselectedFileName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOpenFolder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExportInXls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBrowseFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -178,9 +185,12 @@ public class SQLEditeor extends javax.swing.JFrame {
 
     private void btnExportInXlsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportInXlsActionPerformed
         // TODO add your handling code here:
+        
+        progressBar.setValue(0);
+        progressBar.setString("0%");
 
         String sql = txtEditorArea.getText();
-        
+
         // Check the sql is valied or not
         boolean isValied = false;
         System.out.println(sql.indexOf("select"));
@@ -193,7 +203,29 @@ public class SQLEditeor extends javax.swing.JFrame {
         }
         // if valid call core function
         if (isValied && (!sql.isEmpty())) {
-            new CoreSQLEditeor().btnExportInXlsClick(sql, fileSavingLocation);
+            if (new CoreSQLEditeor().btnExportInXlsClick(sql, fileSavingLocation)) {
+                progressBar.setValue(100);
+                progressBar.setString("100%");
+
+                JOptionPane.showMessageDialog(
+                        null, "Save Data In \n" + fileSavingLocation,
+                        ":: Data Saved ::", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            /*
+            // This Code generate for runing process status in progress bar.
+            ProcessToMakeXlsFile makeXlsFile = new ProcessToMakeXlsFile(sql, fileSavingLocation);
+            makeXlsFile.addPropertyChangeListener(new PropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent evt) {
+                    if (evt.getPropertyName().equals("writeXLS")) {
+                        progressBar.setValue((int) evt.getNewValue());
+                        progressBar.setString(evt.getNewValue().toString()+"%");
+                    }
+                }
+            });
+            makeXlsFile.execute();
+             */
         } else {
             JOptionPane.showMessageDialog(
                     null, "This console work for only \nGet data from database Or write SQL.",
@@ -232,7 +264,7 @@ public class SQLEditeor extends javax.swing.JFrame {
     private void btnOpenFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenFolderActionPerformed
         try {
             // TODO add your handling code here:
-            Desktop desktop=Desktop.getDesktop();
+            Desktop desktop = Desktop.getDesktop();
             desktop.open(new File(fileSavingLocation));
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
@@ -243,7 +275,6 @@ public class SQLEditeor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenFolderActionPerformed
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowseFile;
     private javax.swing.JButton btnExportInXls;
@@ -251,11 +282,11 @@ public class SQLEditeor extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemMenuDatabaseSetup;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCopyRightTeg;
     private javax.swing.JLabel lblShowselectedFileName;
     private javax.swing.JMenu menuItemDatabaseSetup;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JTextArea txtEditorArea;
     // End of variables declaration//GEN-END:variables
 }

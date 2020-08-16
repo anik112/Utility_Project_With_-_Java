@@ -12,6 +12,7 @@ import java.sql.ResultSetMetaData;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -24,12 +25,23 @@ import sqlrunnerinoracle.model.GetSQLDataFromDatabase;
  *
  * @author VSI SERVER
  */
-public class CoreSQLEditeor {
+public class ProcessToMakeXlsFile extends SwingWorker<Boolean, Integer> {
 
-    public boolean btnExportInXlsClick(String sql, String savingLoc) {
+    private String sql = "";
+    private String savingLoc = "";
+
+    public ProcessToMakeXlsFile(String sql, String svingLoc) {
+        this.sql = sql;
+        this.savingLoc = svingLoc;
+    }
+
+    @Override
+    protected Boolean doInBackground() throws Exception {
         Connection connection = DBConnection.getConnection(); // get database connection
         // make result set from get data fomr databse
         ResultSet dataSet = new GetSQLDataFromDatabase().getSqlDataFromDatabase(connection, sql);
+        int rsSize = 400;
+
         // call Workbook class for make xls sheet
         /*
         Procedure of make xls file
@@ -74,11 +86,16 @@ public class CoreSQLEditeor {
 //                System.out.println(rowIndex + " -- " + dataSet.getString(1)
 //                        + " ---- " + dataSet.getString(2)
 //                        + " ---- " + dataSet.getString(3));
+                firePropertyChange("writeXLS", 0, (rowIndex / rsSize) * 100);
+                System.out.println("==> create new row.");
             }
             //System.out.println("Total Row Patch: " + rowIndex);
 
             FileOutputStream fos = new FileOutputStream(savingLoc); // Open file by FOS
             workbook.write(fos); // write data in xls file
+            JOptionPane.showMessageDialog(
+                    null, "Save Data In \n" + savingLoc,
+                    "Total Export Data: " + rowIndex, JOptionPane.INFORMATION_MESSAGE);
             return true;
         } catch (Exception ex) {
             Logger.getLogger(CoreSQLEditeor.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,6 +103,7 @@ public class CoreSQLEditeor {
                     null, "FN: [btnExportInXlsClick] \n" + ex.getMessage(),
                     ":: Function Error-101 :: ", JOptionPane.ERROR_MESSAGE);
         }
+
         return false;
     }
 
