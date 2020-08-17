@@ -6,8 +6,6 @@
 package sqlrunnerinoracle.view;
 
 import java.awt.Desktop;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -15,7 +13,6 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import sqlrunnerinoracle.core.CoreSQLEditeor;
-import sqlrunnerinoracle.core.ProcessToMakeXlsFile;
 
 /**
  *
@@ -66,10 +63,10 @@ public class SQLEditeor extends javax.swing.JFrame {
         txtEditorArea.setColumns(20);
         txtEditorArea.setLineWrap(true);
         txtEditorArea.setRows(5);
+        txtEditorArea.setToolTipText("Write only select SQL and don't use any parameter variable in this SQL.");
         jScrollPane1.setViewportView(txtEditorArea);
 
         btnExportInXls.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-        btnExportInXls.setForeground(new java.awt.Color(255, 0, 51));
         btnExportInXls.setText("Export .xls");
         btnExportInXls.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.lightGray));
         btnExportInXls.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +143,7 @@ public class SQLEditeor extends javax.swing.JFrame {
 
         lblCopyRightTeg.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
         lblCopyRightTeg.setForeground(new java.awt.Color(255, 0, 51));
-        lblCopyRightTeg.setText("@copyright: Vistasoft IT Bangladesh Ltd. / Anik paul");
+        lblCopyRightTeg.setText("@copyright: Vistasoft IT Bangladesh Ltd.");
 
         menuItemDatabaseSetup.setText("Setup");
 
