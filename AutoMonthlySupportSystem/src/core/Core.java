@@ -6,6 +6,8 @@
 package core;
 
 import java.sql.Connection;
+import java.util.List;
+import model.service.TableName;
 
 /**
  *
@@ -14,5 +16,6 @@ import java.sql.Connection;
 public interface Core {
     
     public void updateTableSpace(Connection connection);
+    public List<TableName> getTableList(Connection connection);
     
 }

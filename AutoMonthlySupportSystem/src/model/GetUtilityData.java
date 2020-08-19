@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.service.SQLList;
-import model.service.TableName;
 import model.service.TableSpaceInfo;
 
 /**
@@ -22,24 +21,16 @@ import model.service.TableSpaceInfo;
  */
 public class GetUtilityData {
     
-    public List<TableName> getAllTableName(Connection con){
-        
-        List<TableName> nameList=new ArrayList<>();
+    public ResultSet getAllTableName(Connection con){
+        ResultSet set=null;
         try{
             PreparedStatement statement=con.prepareStatement(new SQLList().SELECT_ALL_TABLE);
-            ResultSet rs=statement.executeQuery();
-            
-            while(rs.next()){
-                TableName tableName=new TableName();
-                tableName.setTableName(rs.getString(1));
-                nameList.add(tableName);
-            }
-            
+            set=statement.executeQuery();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, new ErrorList().GET_TBL_NM_ERROR+e.getMessage(),
                     "GET_TBL_NM_ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        return nameList;
+        return set;
     }
     
     public List<TableSpaceInfo> getTableSpaceInfo(Connection con){
@@ -57,6 +48,7 @@ public class GetUtilityData {
                 
                 tableSpaceList.add(spaceInfo);
             }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, new ErrorList().GET_TBLSPACE_INFO+e.getMessage(),
                     "GET_TBLSPACE_INFO", JOptionPane.ERROR_MESSAGE);
@@ -68,11 +60,13 @@ public class GetUtilityData {
         try{
             PreparedStatement statement=con.prepareStatement(sql);
             statement.executeUpdate();
-            con.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, new ErrorList().UPDATE_TABLESPACE+e.getMessage(),
                     "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    
+    
     
 }

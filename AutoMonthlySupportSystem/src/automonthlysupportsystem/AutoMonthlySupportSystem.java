@@ -5,6 +5,9 @@
  */
 package automonthlysupportsystem;
 
+import core.Controller;
+import core.Core;
+import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import model.OraDbConnection;
+import model.service.TableName;
 
 /**
  *
@@ -27,7 +32,11 @@ public class AutoMonthlySupportSystem extends Application {
             
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                //new Controller().updateTableSpace(OraDbConnection.connection());
+                for (TableName table: new Controller().getTableList(OraDbConnection.connection())) {
+                    System.out.println("> "+table.getTableName());
+                }
+                System.out.println("Update.... !");
             }
         });
         

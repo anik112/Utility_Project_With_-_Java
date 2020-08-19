@@ -14,6 +14,8 @@ public class TableName {
     private int id;
     private String tableName;
     private String tableOwner;
+    private String tableScript;
+    private String indexScript;
 
     public int getId() {
         return id;
@@ -37,6 +39,22 @@ public class TableName {
 
     public void setTableOwner(String tableOwner) {
         this.tableOwner = tableOwner;
+    }
+
+    public String getTableScript() {
+        return tableScript;
+    }
+
+    public void setTableScript(String tableScript) {
+        this.tableScript = tableScript;
+    }
+
+    public String getIndexScript() {
+        return indexScript;
+    }
+
+    public void setIndexScript(String indexScript) {
+        this.indexScript = indexScript;
     }
     
     

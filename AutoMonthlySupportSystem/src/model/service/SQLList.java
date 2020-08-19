@@ -14,7 +14,13 @@ import java.util.Map;
  */
 public class SQLList {
     
-    public Map<String,Boolean> TABLESPACE_NAMES=new HashMap<>();
+    public final String TBS_USERS="USERS";
+    public final String TBS_SYSTEM="SYSTEM";
+    public final String TBS_SYSAUX="SYSAUX";
+    public final String TBS_UNDOTBS1="UNDOTBS1";
+    
+    public Map<String,int[]> TABLESPACE_SIZES=new HashMap<>();
+    
     public final String SELECT_ALL_TABLE="SELECT TABLE_NAME FROM ALL_TABLE WHERE OWNER='PAYROLL'";
     public final String GET_ALL_TABLESPACE="SELECT DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES/1024/1024 AS TOTAL_SIZE,\n" +
                                             "SUM(FREE_SPACE.BYTES)/1024/1024 AS FREE_SPACE \n" +
@@ -23,16 +29,23 @@ public class SQLList {
                                             "GROUP BY DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES";
 
     public SQLList() {
-        TABLESPACE_NAMES.put("USERS", true);
-        TABLESPACE_NAMES.put("SYSTEM", true);
-        TABLESPACE_NAMES.put("SYSAUX", true);
-        TABLESPACE_NAMES.put("UNDOTBS1", true);
+        setAllSpaceSize();
     }
 
-    public String updateTablespace(String tableSpaceName){
-        return "ALTER DATABASE DATAFILE '"+tableSpaceName+"' RESIZE "+0+"M";
+    public String updateTablespace(String dataFile, int size){
+        return "ALTER DATABASE DATAFILE '"+dataFile+"' RESIZE "+size+"M";
     }
     
-    
+    private void setAllSpaceSize(){
+        int[] sizeForUsers={60,65,70,75};
+        int[] sizeForSystem={250};
+        int[] sizeForSysax={68};
+        int[] sizeForUndotbs1={80};
+        
+        TABLESPACE_SIZES.put(TBS_USERS, sizeForUsers);
+        TABLESPACE_SIZES.put(TBS_SYSAUX, sizeForSysax);
+        TABLESPACE_SIZES.put(TBS_SYSTEM, sizeForSystem);
+        TABLESPACE_SIZES.put(TBS_UNDOTBS1, sizeForUndotbs1);
+    }
     
 }
