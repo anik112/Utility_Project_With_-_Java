@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.GetUtilityData;
 import model.OraDbConnection;
+import model.service.IndexName;
 import model.service.SQLList;
 import model.service.TableName;
 import model.service.TableSpaceInfo;
@@ -71,14 +72,26 @@ public class Controller implements Core {
     }
 
     @Override
-    public List<TableName> getTableList(Connection connection) {
-        List<TableName> list=new ArrayList<>();
+    public List<String> getTableList(Connection connection) {
+        List<String> list=new ArrayList<>();
         try {
             ResultSet rs=new GetUtilityData().getAllTableName(connection);
             while(rs.next()){
-                TableName tableName=new TableName();
-                tableName.setTableName(rs.getString(1));
-                list.add(tableName);
+                list.add(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    @Override
+    public List<String> getIndexList(Connection connection) {
+        List<String> list=new ArrayList<>();
+        try {
+            ResultSet rs=new GetUtilityData().getAllIndexName(connection);
+            while(rs.next()){
+                list.add(rs.getString(1));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

@@ -12,6 +12,7 @@ package error;
 public class ErrorList {
     
     public String GET_TBL_NM_ERROR="GET_TBL_NM_ERROR: ";
+    public String GET_INDX_NM_ERROR="GET_INDX_NM_ERROR: ";
     public String GET_TBLSPACE_INFO="GET_TBLSPACE_INFO: ";
     public String UPDATE_TABLESPACE="UPDATE_TABLESPACE: ";
 

@@ -33,6 +33,19 @@ public class GetUtilityData {
         return set;
     }
     
+    
+    public ResultSet getAllIndexName(Connection con){
+         ResultSet set=null;
+        try{
+            PreparedStatement statement=con.prepareStatement(new SQLList().SELECT_ALL_INDEX);
+            set=statement.executeQuery();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, new ErrorList().GET_INDX_NM_ERROR+e.getMessage(),
+                    "GET_INDX_NM_ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        return set;
+    }
+    
     public List<TableSpaceInfo> getTableSpaceInfo(Connection con){
         List<TableSpaceInfo> tableSpaceList=new ArrayList<>();
         try{

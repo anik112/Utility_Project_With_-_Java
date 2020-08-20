@@ -33,8 +33,8 @@ public class AutoMonthlySupportSystem extends Application {
             @Override
             public void handle(ActionEvent event) {
                 //new Controller().updateTableSpace(OraDbConnection.connection());
-                for (TableName table: new Controller().getTableList(OraDbConnection.connection())) {
-                    System.out.println("> "+table.getTableName());
+                for (String table: new Controller().getTableList(OraDbConnection.connection())) {
+                    System.out.println("> "+table);
                 }
                 System.out.println("Update.... !");
             }

@@ -21,13 +21,17 @@ public class SQLList {
     
     public Map<String,int[]> TABLESPACE_SIZES=new HashMap<>();
     
-    public final String SELECT_ALL_TABLE="SELECT TABLE_NAME FROM ALL_TABLE WHERE OWNER='PAYROLL'";
+    public final String SELECT_ALL_TABLE="SELECT TABLE_NAME FROM ALL_TABLES WHERE OWNER='PAYROLL'";
+    public final String SELECT_ALL_INDEX="SELECT INDEX_NAME FROM ALL_INDEXES WHERE OWNER='PAYROLL'";
     public final String GET_ALL_TABLESPACE="SELECT DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES/1024/1024 AS TOTAL_SIZE,\n" +
                                             "SUM(FREE_SPACE.BYTES)/1024/1024 AS FREE_SPACE \n" +
                                             "FROM DBA_DATA_FILES DATA_FILES, DBA_FREE_SPACE FREE_SPACE \n" +
                                             "WHERE DATA_FILES.FILE_ID=FREE_SPACE.FILE_ID \n" +
                                             "GROUP BY DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES";
-
+    public final String GET_TABLE_SCRIPT="";
+    
+    
+    
     public SQLList() {
         setAllSpaceSize();
     }
