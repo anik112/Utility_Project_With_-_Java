@@ -19,5 +19,6 @@ public interface Core {
     public void updateTableSpace(Connection connection);
     public List<String> getTableList(Connection connection);
     public List<String> getIndexList(Connection connection);
+    public void updateTableIndex(Connection connection);
     
 }

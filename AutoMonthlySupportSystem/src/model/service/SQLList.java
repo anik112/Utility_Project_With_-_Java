@@ -18,6 +18,8 @@ public class SQLList {
     public final String TBS_SYSTEM="SYSTEM";
     public final String TBS_SYSAUX="SYSAUX";
     public final String TBS_UNDOTBS1="UNDOTBS1";
+    public String INDX_NAME="";
+    public String TABLE_NAME="";
     
     public Map<String,int[]> TABLESPACE_SIZES=new HashMap<>();
     
@@ -28,8 +30,8 @@ public class SQLList {
                                             "FROM DBA_DATA_FILES DATA_FILES, DBA_FREE_SPACE FREE_SPACE \n" +
                                             "WHERE DATA_FILES.FILE_ID=FREE_SPACE.FILE_ID \n" +
                                             "GROUP BY DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES";
-    public final String GET_TABLE_SCRIPT="";
-    
+    public final String GET_TABLE_SCRIPT="SELECT DBMS_METADATA.GET_DDL('TABLE','"+TABLE_NAME+"') AS TABLE_SCR FROM DUAL";
+    public String GRT_INDEX_SCRIPT="SELECT DBMS_METADATA.GET_DDL('INDEX','IDX_DATA_OUT') AS INDEX_SCR FROM DUAL";;
     
     
     public SQLList() {

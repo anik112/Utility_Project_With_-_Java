@@ -37,6 +37,9 @@ public class AutoMonthlySupportSystem extends Application {
                     System.out.println("> "+table);
                 }
                 System.out.println("Update.... !");
+                
+                new Controller().updateTableIndex(OraDbConnection.connection());
+                
             }
         });
         

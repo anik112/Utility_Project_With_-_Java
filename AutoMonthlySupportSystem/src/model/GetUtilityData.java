@@ -21,13 +21,17 @@ import model.service.TableSpaceInfo;
  */
 public class GetUtilityData {
     
+    private SQLList lList=new SQLList();
+    private ErrorList errorList=new ErrorList();
+    
+    
     public ResultSet getAllTableName(Connection con){
         ResultSet set=null;
         try{
-            PreparedStatement statement=con.prepareStatement(new SQLList().SELECT_ALL_TABLE);
+            PreparedStatement statement=con.prepareStatement(lList.SELECT_ALL_TABLE);
             set=statement.executeQuery();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, new ErrorList().GET_TBL_NM_ERROR+e.getMessage(),
+            JOptionPane.showMessageDialog(null, errorList.GET_TBL_NM_ERROR+e.getMessage(),
                     "GET_TBL_NM_ERROR", JOptionPane.ERROR_MESSAGE);
         }
         return set;
@@ -37,10 +41,10 @@ public class GetUtilityData {
     public ResultSet getAllIndexName(Connection con){
          ResultSet set=null;
         try{
-            PreparedStatement statement=con.prepareStatement(new SQLList().SELECT_ALL_INDEX);
+            PreparedStatement statement=con.prepareStatement(lList.SELECT_ALL_INDEX);
             set=statement.executeQuery();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, new ErrorList().GET_INDX_NM_ERROR+e.getMessage(),
+            JOptionPane.showMessageDialog(null, errorList.GET_INDX_NM_ERROR+e.getMessage(),
                     "GET_INDX_NM_ERROR", JOptionPane.ERROR_MESSAGE);
         }
         return set;
@@ -49,7 +53,7 @@ public class GetUtilityData {
     public List<TableSpaceInfo> getTableSpaceInfo(Connection con){
         List<TableSpaceInfo> tableSpaceList=new ArrayList<>();
         try{
-            PreparedStatement statement=con.prepareStatement(new SQLList().GET_ALL_TABLESPACE);
+            PreparedStatement statement=con.prepareStatement(lList.GET_ALL_TABLESPACE);
             ResultSet rs=statement.executeQuery();
             
             while(rs.next()){
@@ -63,7 +67,7 @@ public class GetUtilityData {
             }
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, new ErrorList().GET_TBLSPACE_INFO+e.getMessage(),
+            JOptionPane.showMessageDialog(null, errorList.GET_TBLSPACE_INFO+e.getMessage(),
                     "GET_TBLSPACE_INFO", JOptionPane.ERROR_MESSAGE);
         }
         return tableSpaceList;
@@ -74,12 +78,27 @@ public class GetUtilityData {
             PreparedStatement statement=con.prepareStatement(sql);
             statement.executeUpdate();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, new ErrorList().UPDATE_TABLESPACE+e.getMessage(),
+            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
                     "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     
-    
+    public String getIndexScript(Connection con, String indexName){
+        String script="";
+        try{
+            //lList.INDX_NAME=indexName;
+            PreparedStatement statement=con.prepareStatement(lList.GRT_INDEX_SCRIPT);
+            ResultSet rs=statement.executeQuery();
+            while(rs.next()){
+                script=rs.getString(1);
+                return script;
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
+                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+        }
+        return script;
+    }
     
 }
