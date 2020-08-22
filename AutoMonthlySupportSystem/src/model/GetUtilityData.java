@@ -73,22 +73,10 @@ public class GetUtilityData {
         return tableSpaceList;
     }
     
-    public void updateTableSpace(Connection con, String sql){
-        try{
-            PreparedStatement statement=con.prepareStatement(sql);
-            statement.executeUpdate();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
-                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    
     public String getIndexScript(Connection con, String indexName){
         String script="";
         try{
-            //lList.INDX_NAME=indexName;
-            PreparedStatement statement=con.prepareStatement(lList.GRT_INDEX_SCRIPT);
+            PreparedStatement statement=con.prepareStatement(lList.getIndexScript(indexName));
             ResultSet rs=statement.executeQuery();
             while(rs.next()){
                 script=rs.getString(1);
@@ -100,5 +88,39 @@ public class GetUtilityData {
         }
         return script;
     }
+    
+    public void updateSQL(Connection con, String sql){
+        try{
+            PreparedStatement statement=con.prepareStatement(sql);
+            statement.executeUpdate();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
+                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void insertSQL(Connection con, String sql){
+        try{
+            PreparedStatement statement=con.prepareStatement(sql);
+            statement.executeUpdate();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
+                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public ResultSet getDataFromSQL(Connection con, String sql){
+        ResultSet rs=null;
+        try{
+            PreparedStatement statement=con.prepareStatement(sql);
+            rs=statement.executeQuery();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
+                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+        }
+        return rs;
+    }
+    
+    
     
 }

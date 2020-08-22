@@ -36,7 +36,7 @@ public class Controller implements Core {
         tableSpaceList = data.getTableSpaceInfo(connection);
 
         for (TableSpaceInfo tableSpaceInfo : tableSpaceList) {
-            data.updateTableSpace(connection,
+            data.updateSQL(connection,
                     lList.updateTablespace(tableSpaceInfo.getFileName(),
                             updateFinalSizeOfTableSpace(
                                     tableSpaceInfo.getTableSpaceName(),
@@ -102,7 +102,27 @@ public class Controller implements Core {
 
     @Override
     public void updateTableIndex(Connection connection) {
+        try {
+            ResultSet set=data.getDataFromSQL(connection, lList.SELECT_INDEX_UPTO_16_WITH_TABLESPACE);
+            boolean check=true;
+            while(set.next()){
+                String sql=lList.getAlterIndexScriptForResize(set.getString(1),set.getString(3), 16);
+                System.out.println(sql);
+                data.updateSQL(connection, sql);
+                System.out.println("====== UPDATE ========\n");
+                check=false;
+            }
+            if(check){
+                System.out.println("All index are 16k");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
+    @Override
+    public List<String> getAllIndexScript(Connection connection) {
         List<String> indexNames = new Controller().getIndexList(connection);
         for (String indexName : indexNames) {
             System.out.println("--INEX--"+indexName+"---\n");
@@ -112,10 +132,11 @@ public class Controller implements Core {
             System.out.println("Loc of INITIAL: " + loc);
             String tempStr = indexScrept.substring(loc, loc + 5);
             System.out.println(tempStr);
-            indexScrept = indexScrept.replace(tempStr, "64000");
+            indexScrept = indexScrept.replace(tempStr, "16000");
             System.out.println(indexScrept);
             System.out.println("=============================");
         }
+        return indexNames;
     }
 
 }
