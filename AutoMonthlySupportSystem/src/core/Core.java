@@ -19,5 +19,8 @@ public interface Core {
     public List<String> getIndexList(Connection connection);
     public void updateTableIndex(Connection connection);
     public List<String> getAllIndexScript(Connection connection);
+    public void rebuildTableScript(Connection connection);
+    public List<String> getAllTableScript(Connection connection);
+    
     
 }

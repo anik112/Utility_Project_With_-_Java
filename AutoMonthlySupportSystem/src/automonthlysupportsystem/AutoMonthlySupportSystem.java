@@ -6,8 +6,6 @@
 package automonthlysupportsystem;
 
 import core.Controller;
-import core.Core;
-import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.OraDbConnection;
-import model.service.TableName;
 
 /**
  *
@@ -39,6 +36,8 @@ public class AutoMonthlySupportSystem extends Application {
                 System.out.println("Update.... !");
                 
                 new Controller().updateTableIndex(OraDbConnection.connection());
+                System.out.println(" < ================================ >\n");
+                new Controller().rebuildTableScript(OraDbConnection.connection());
                 
             }
         });

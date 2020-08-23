@@ -24,20 +24,6 @@ public class GetUtilityData {
     private SQLList lList=new SQLList();
     private ErrorList errorList=new ErrorList();
     
-    
-    public ResultSet getAllTableName(Connection con){
-        ResultSet set=null;
-        try{
-            PreparedStatement statement=con.prepareStatement(lList.SELECT_ALL_TABLE);
-            set=statement.executeQuery();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.GET_TBL_NM_ERROR+e.getMessage(),
-                    "GET_TBL_NM_ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-        return set;
-    }
-    
-    
     public ResultSet getAllIndexName(Connection con){
          ResultSet set=null;
         try{
@@ -89,24 +75,44 @@ public class GetUtilityData {
         return script;
     }
     
-    public void updateSQL(Connection con, String sql){
+    public String getTableScript(Connection con, String tableName){
+        String script="";
         try{
-            PreparedStatement statement=con.prepareStatement(sql);
-            statement.executeUpdate();
+            PreparedStatement statement=con.prepareStatement(lList.getTableScript(tableName));
+            ResultSet rs=statement.executeQuery();
+            while(rs.next()){
+                script=rs.getString(1);
+                return script;
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
                     "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
         }
+        return script;
     }
     
-    public void insertSQL(Connection con, String sql){
+    public boolean updateSQL(Connection con, String sql){
         try{
             PreparedStatement statement=con.prepareStatement(sql);
             statement.executeUpdate();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
                     "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+        return true;
+    }
+    
+    public boolean insertSQL(Connection con, String sql){
+        try{
+            PreparedStatement statement=con.prepareStatement(sql);
+            statement.executeUpdate();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
+                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
     
     public ResultSet getDataFromSQL(Connection con, String sql){

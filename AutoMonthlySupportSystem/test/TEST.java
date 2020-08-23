@@ -1,20 +1,13 @@
 
 import core.Controller;
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLType;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.GetUtilityData;
 import model.OraDbConnection;
-import model.service.IndexName;
-import model.service.TableName;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
