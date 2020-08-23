@@ -53,6 +53,9 @@ public class SQLList {
         int[] sizeForSystem={250};
         int[] sizeForSysax={68};
         int[] sizeForUndotbs1={80};
+        int[] sizeForUsers02={50,55,60,65};
+        int[] sizeForSystem02={200};
+        int[] sizeForIndex={60,65,70,75};
         
         TABLESPACE_SIZES.put(TBS_USERS, sizeForUsers);
         TABLESPACE_SIZES.put(TBS_SYSAUX, sizeForSysax);

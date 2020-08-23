@@ -43,7 +43,7 @@ public class Controller implements Core {
     }
 
     private int updateFinalSizeOfTableSpace(String tableSpaceName, int usedSize, int size) {
-        System.out.println("> " + tableSpaceName);
+        //System.out.println("> " + tableSpaceName);
         int updateSize = 0;
         if (lList.TBS_USERS.equals(tableSpaceName)) {
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_USERS);
