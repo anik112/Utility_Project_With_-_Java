@@ -6,6 +6,7 @@
 package core;
 
 import javax.swing.SwingWorker;
+import model.OraDbConnection;
 
 /**
  *
@@ -23,10 +24,16 @@ public class ProcessMainWindow extends SwingWorker<Void, String> {
     @Override
     protected Void doInBackground() throws Exception {
         
+        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ... ");
+        new Controller().updateTableSpace(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "\n> Update TABLESPACE Success !");
+        
+        
+       
         for(int i=0;i<5;i++){
-            firePropertyChange("writeConsole", null, "> Update file "+i);
-            System.out.println("----------- "+i);
-            Thread.sleep(10);
+            
+            
+            Thread.sleep(200);
         }
         
         return null;

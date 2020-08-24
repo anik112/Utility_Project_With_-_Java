@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingWorker;
 import model.GetUtilityData;
 import model.service.SQLList;
 import model.service.TableSpaceInfo;
@@ -20,7 +21,7 @@ import model.service.TableSpaceInfo;
  *
  * @author Anik
  */
-public class Controller implements Core {
+public class Controller extends SwingWorker<Void, String> implements Core {
 
     private List<TableSpaceInfo> tableSpaceList = new ArrayList<>();
     private final SQLList lList = new SQLList();
@@ -179,6 +180,18 @@ public class Controller implements Core {
     @Override
     public List<String> getAllTableScript(Connection connection) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected Void doInBackground() throws Exception {
+        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ... ");
+        
+        for(int i=0;i<5;i++){
+            firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ... "+i);
+            Thread.sleep(200);
+        }
+        
+        return null;
     }
 
 }

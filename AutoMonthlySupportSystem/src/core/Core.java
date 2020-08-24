@@ -7,6 +7,7 @@ package core;
 
 import java.sql.Connection;
 import java.util.List;
+import javax.swing.SwingWorker;
 
 /**
  *
