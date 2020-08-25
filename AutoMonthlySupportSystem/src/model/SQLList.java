@@ -1,9 +1,11 @@
+package model;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.service;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +63,9 @@ public class SQLList {
         TABLESPACE_SIZES.put(TBS_SYSAUX, sizeForSysax);
         TABLESPACE_SIZES.put(TBS_SYSTEM, sizeForSystem);
         TABLESPACE_SIZES.put(TBS_UNDOTBS1, sizeForUndotbs1);
+        TABLESPACE_SIZES.put(TBS_USERS02, sizeForUsers02);
+        TABLESPACE_SIZES.put(TBS_SYSTEM02, sizeForSystem02);
+        TABLESPACE_SIZES.put(TBS_INDX, sizeForIndex);
     }
     
     public String getIndexScript(String indexName){

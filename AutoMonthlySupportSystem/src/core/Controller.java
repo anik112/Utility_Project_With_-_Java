@@ -14,8 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingWorker;
 import model.GetUtilityData;
-import model.service.SQLList;
-import model.service.TableSpaceInfo;
+import model.OraDbConnection;
+import model.SQLList;
+import model.TableSpaceInfo;
 
 /**
  *
@@ -105,11 +106,11 @@ public class Controller extends SwingWorker<Void, String> implements Core {
                 String sql = lList.getAlterIndexScriptForResize(set.getString(1), set.getString(4), 16);
                 System.out.println(sql);
                 data.updateSQL(connection, sql);
-                System.out.println("====== UPDATE ========\n");
+                firePropertyChange("writeConsole", null, "\n> INEX == " + set.getString(4) + " == [ Update ]");
                 check = false;
             }
             if (check) {
-                System.out.println("All index are 16k");
+                firePropertyChange("writeConsole", null, "> All index script are 16k --!\n");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,56 +122,55 @@ public class Controller extends SwingWorker<Void, String> implements Core {
     public List<String> getAllIndexScript(Connection connection) {
         List<String> indexNames = new Controller().getIndexList(connection);
         for (String indexName : indexNames) {
-            System.out.println("== INEX == " + indexName + " ==");
+            System.out.println("\n> INEX == " + indexName + " == [ Update ]");
             String indexScrept = data.getIndexScript(connection, indexName);
-            int loc = indexScrept.indexOf("INITIAL")+8;
-            int numberLength=5;
+            int loc = indexScrept.indexOf("INITIAL") + 8;
+            int numberLength = 5;
             String tempStr = indexScrept.substring(loc, (loc + numberLength));
-            System.out.println(tempStr);
             indexScrept = indexScrept.replace(tempStr, "16000");
-            System.out.println(indexScrept);
         }
         return indexNames;
     }
 
     @Override
-    public void rebuildTableScript(Connection connection) {
+    public void rebuildTableScript(Connection con) {
         try {
             boolean check = true;
-            ResultSet set = data.getDataFromSQL(connection, lList.SELECT_TABLE_UPTO_16);
+            ResultSet set = data.getDataFromSQL(con, lList.SELECT_TABLE_UPTO_16);
             while (set.next()) {
+                Connection connection = con;
                 String tableName = set.getString(1);
                 ResultSet rs = data.getDataFromSQL(connection, lList.getTableScript(tableName));
                 while (rs.next()) {
-                    System.out.println("== TABLE == " + tableName + " ==\n");
+                    firePropertyChange("writeConsole", null, "> TABLE == " + tableName + "\n");
                     String tableScript = data.getTableScript(connection, tableName);
                     if (!tableScript.contains("BLOB")) {
-                        int loc = tableScript.indexOf("INITIAL")+8;
+                        int loc = tableScript.indexOf("INITIAL") + 8;
                         int endLoc = tableScript.indexOf("NEXT");
                         String tempStr = tableScript.substring(loc, (endLoc - 1));
                         tableScript = tableScript.replace(tempStr, "16000");
-                        //System.out.println(tableScript);
                         // Start script rebuild
                         if (data.updateSQL(connection, lList.getTableRenameScript(tableName))) {
-                            System.out.println("> Table name change to " + tableName + "_X");
+                            firePropertyChange("writeConsole", null, "> Table name change to " + tableName + "_X\n");
                             if (data.updateSQL(connection, tableScript)) {
-                                System.out.println("> Carete new table --!");
+                                firePropertyChange("writeConsole", null, "> Carete new table --!\n");
                                 if (data.updateSQL(connection, lList.getInsertOneTblToAnotherScript(tableName, tableName + "_X"))) {
-                                    System.out.println("> Update data one table to another.");
+                                    firePropertyChange("writeConsole", null, "> Update data one table to another.\n");
                                     if (data.updateSQL(connection, lList.getDeleteTableScript(tableName + "_X"))) {
-                                        System.out.println("> Table deleted "+tableName+"_X");
-                                        System.out.println(" =========== Update Table Script ==========");
+                                        System.out.println("> Table deleted " + tableName + "_X");
+                                        firePropertyChange("writeConsole", null, "> Table deleted " + tableName + "_X\n\n");
                                     }
                                 }
                             }
                         }
-                        
+
                     }
+                    firePropertyChange("writeConsole", null, "$ This table work with Image.\n");
                 }
                 check = false;
             }
             if (check) {
-                System.out.println("All script are 16k --!");
+                firePropertyChange("writeConsole", null, "> All Table are 16k --!\n");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -184,13 +184,13 @@ public class Controller extends SwingWorker<Void, String> implements Core {
 
     @Override
     protected Void doInBackground() throws Exception {
-        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ... ");
-        
-        for(int i=0;i<5;i++){
-            firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ... "+i);
-            Thread.sleep(200);
-        }
-        
+        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
+        //updateTableSpace(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
+        updateTableIndex(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
+        rebuildTableScript(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
         return null;
     }
 

@@ -12,8 +12,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.service.SQLList;
-import model.service.TableSpaceInfo;
 
 /**
  *
@@ -69,8 +67,8 @@ public class GetUtilityData {
                 return script;
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
-                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "GET_INDX_SCRIPT: "+e.getMessage(),
+                    "GET_INDX_SCRIPT", JOptionPane.ERROR_MESSAGE);
         }
         return script;
     }
@@ -85,8 +83,9 @@ public class GetUtilityData {
                 return script;
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
-                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "GET_TBL_SCRIPT: "+e.getMessage(),
+                    "GET_TBL_SCRIPT", JOptionPane.ERROR_MESSAGE);
         }
         return script;
     }
@@ -96,8 +95,9 @@ public class GetUtilityData {
             PreparedStatement statement=con.prepareStatement(sql);
             statement.executeUpdate();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
-                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, 
+                    "<html><body><p style='width: 200px;'>"+sql+"\n> "+e.getMessage()+"</p></body></html>",
+                    "UPDATE_SQL", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -108,8 +108,9 @@ public class GetUtilityData {
             PreparedStatement statement=con.prepareStatement(sql);
             statement.executeUpdate();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
-                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, 
+                    "<html><body><p style='width: 200px;'>"+sql+"\n> "+e.getMessage()+"</p></body></html>",
+                    "INSERT_SQL", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
@@ -121,8 +122,9 @@ public class GetUtilityData {
             PreparedStatement statement=con.prepareStatement(sql);
             rs=statement.executeQuery();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, errorList.UPDATE_TABLESPACE+e.getMessage(),
-                    "UPDATE_TABLESPACE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, 
+                    "<html><body><p style='width: 200px;'>"+sql+"\n> "+e.getMessage()+"</p></body></html>",
+                    "GET_DATA_FROM_SQL", JOptionPane.ERROR_MESSAGE);
         }
         return rs;
     }

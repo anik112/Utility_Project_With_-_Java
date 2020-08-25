@@ -21,38 +21,23 @@ import view.MainView;
  * @author Anik
  */
 public class AutoMonthlySupportSystem extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        btn.setOnAction(new EventHandler<ActionEvent>() {
-//            
-//            @Override
-//            public void handle(ActionEvent event) {
-//                //new Controller().updateTableSpace(OraDbConnection.connection());
-//                for (String table: new Controller().getTableList(OraDbConnection.connection())) {
-//                    System.out.println("> "+table);
-//                }
-//                System.out.println("Update.... !");
-//                
-//                new Controller().updateTableIndex(OraDbConnection.connection());
-//                System.out.println(" < ================================ >\n");
-//                new Controller().rebuildTableScript(OraDbConnection.connection());
-//                
-//            }
-//        });
-//        
-//        StackPane root = new StackPane();
-//        root.getChildren().add(btn);
-//        
-//        Scene scene = new Scene(root, 300, 250);
-//        
-//        primaryStage.setTitle("Hello World!");
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-
-new MainView().setVisible(true);
+        
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex) {
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        new MainView().setVisible(true);
+        //</editor-fold>
     }
 
     /**
@@ -61,5 +46,5 @@ new MainView().setVisible(true);
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
