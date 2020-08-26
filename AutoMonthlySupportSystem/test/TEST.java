@@ -41,8 +41,8 @@ public class TEST {
 //            callableStmt=con.prepareCall("{call dbms_output.get_line(?,?)}");
 //            callableStmt.registerOutParameter(1, Types.VARCHAR);
 
-            List<String> list = new Controller().getTableList(con);
-            List<String> indexNames=new Controller().getIndexList(con);
+            List<String> list = new Controller(0).getTableList(con);
+            List<String> indexNames=new Controller(0).getIndexList(con);
 
             for (String tableName : list) {
                 String sql1 = "select DBMS_METADATA.get_ddl ('TABLE', '"+tableName+"') as tbale_data from dual";

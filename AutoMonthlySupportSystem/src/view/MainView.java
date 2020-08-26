@@ -41,11 +41,13 @@ public class MainView extends javax.swing.JFrame {
         penAtrebute = new javax.swing.JPanel();
         btnProcessStart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBackupSize = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        lblCopyRightTeg = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -55,14 +57,18 @@ public class MainView extends javax.swing.JFrame {
         setLocation(new java.awt.Point(200, 100));
         setResizable(false);
 
+        console.setEditable(false);
+        console.setBackground(new java.awt.Color(255, 255, 224));
         console.setColumns(20);
         console.setFont(new java.awt.Font("Monospaced", 0, 11)); // NOI18N
         console.setRows(5);
         console.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));
         jScrollPane1.setViewportView(console);
 
+        penAtrebute.setBackground(new java.awt.Color(255, 255, 224));
         penAtrebute.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
 
+        btnProcessStart.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnProcessStart.setText("Process Start");
         btnProcessStart.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.white));
         btnProcessStart.addActionListener(new java.awt.event.ActionListener() {
@@ -71,20 +77,34 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Databackup Size:");
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));
+        txtBackupSize.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        txtBackupSize.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Index Size:");
 
+        jTextField2.setEditable(false);
+        jTextField2.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jTextField2.setText("16K");
         jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Table Size:");
 
+        jTextField3.setEditable(false);
+        jTextField3.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jTextField3.setText("16K");
         jTextField3.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));
+
+        jLabel4.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("MB");
 
         javax.swing.GroupLayout penAtrebuteLayout = new javax.swing.GroupLayout(penAtrebute);
         penAtrebute.setLayout(penAtrebuteLayout);
@@ -98,11 +118,14 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(penAtrebuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(penAtrebuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(penAtrebuteLayout.createSequentialGroup()
+                        .addGroup(penAtrebuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBackupSize, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4))
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(btnProcessStart, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -114,7 +137,8 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(penAtrebuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBackupSize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(penAtrebuteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,8 +171,12 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(penAtrebute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
+
+        lblCopyRightTeg.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
+        lblCopyRightTeg.setForeground(new java.awt.Color(255, 0, 51));
+        lblCopyRightTeg.setText("@copyright: Vistasoft IT Bangladesh Ltd.");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -162,17 +190,22 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblCopyRightTeg)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(lblCopyRightTeg))
         );
 
         pack();
@@ -181,21 +214,21 @@ public class MainView extends javax.swing.JFrame {
     private void btnProcessStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessStartActionPerformed
         // TODO add your handling code here:
         System.out.println("----> click");
-        try {
-            Controller pmw = new Controller();
-            pmw.addPropertyChangeListener(new PropertyChangeListener() {
-                @Override
-                public void propertyChange(PropertyChangeEvent evt1) {
-                    consoleText += evt1.getNewValue().toString();
-                    console.setText(consoleText);
-                }
-            });
-            pmw.execute();
-        } catch (Exception ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        if (Integer.valueOf(txtBackupSize.getText()) > 0) {
+            try {
+                Controller pmw = new Controller(Integer.valueOf(txtBackupSize.getText()));
+                pmw.addPropertyChangeListener(new PropertyChangeListener() {
+                    @Override
+                    public void propertyChange(PropertyChangeEvent evt1) {
+                        consoleText += evt1.getNewValue().toString();
+                        console.setText(consoleText);
+                    }
+                });
+                pmw.execute();
+            } catch (Exception ex) {
+                Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
-
     }//GEN-LAST:event_btnProcessStartActionPerformed
 
 
@@ -205,14 +238,16 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblCopyRightTeg;
     private javax.swing.JPanel penAtrebute;
+    private javax.swing.JTextField txtBackupSize;
     // End of variables declaration//GEN-END:variables
 }

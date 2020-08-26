@@ -15,7 +15,7 @@ import javax.swing.SwingWorker;
  */
 public interface Core {
     
-    public void updateTableSpace(Connection connection);
+    public void updateTableSpace(Connection connection, int databackupSizeInMb);
     public List<String> getTableList(Connection connection);
     public List<String> getIndexList(Connection connection);
     public void updateTableIndex(Connection connection);

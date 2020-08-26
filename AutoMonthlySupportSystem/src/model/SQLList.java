@@ -16,16 +16,17 @@ import java.util.Map;
  */
 public class SQLList {
     
-    public final String TBS_USERS="USERS";
-    public final String TBS_SYSTEM="SYSTEM";
-    public final String TBS_SYSAUX="SYSAUX";
-    public final String TBS_UNDOTBS1="UNDOTBS1";
-    public final String TBS_SYSTEM02="SYSTEM";
-    public final String TBS_USERS02="USERS";
-    public final String TBS_USRPICTURE="USRPICTURE";
-    public final String TBS_TEMP="TEMP";
-    public final String TBS_INDX="INDX";
-    public final String TBS_EXAMPLE="EXAMPLE";
+    public final String TBS_USERS="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\USERS01.DBF";
+    public final String TBS_SYSTEM="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\SYSTEM01.DBF";
+    public final String TBS_SYSAUX="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\SYSAUX01.DBF";
+    public final String TBS_UNDOTBS1="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\UNDOTBS01.DBF";
+    public final String TBS_SYSTEM02="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\SYSTEM02.DBF";
+    public final String TBS_USERS02="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\USERS02.DBF";
+    public final String TBS_USRPICTURE="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\USRPICTURE01.DBF";
+    public final String TBS_TEMP="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\TEMP01.DBF";
+    public final String TBS_INDX="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\INDX01.DBF";
+    public final String TBS_EXAMPLE="D:\\ORACLE\\PRODUCT\\10.2.0\\ORADATA\\PAYROLL\\EXAMPLE01.DBF";
+    
     
     public Map<String,int[]> TABLESPACE_SIZES=new HashMap<>();
     
@@ -50,22 +51,30 @@ public class SQLList {
         return "ALTER DATABASE DATAFILE '"+dataFile+"' RESIZE "+size+"M";
     }
     
+    public String updateTempSpace(String dataFile, int size){
+        return "ALTER DATABASE TEMPFILE '"+dataFile+"' RESIZE "+size+"M";
+    }
+    
     private void setAllSpaceSize(){
-        int[] sizeForUsers={60,65,70,75};
+        int[] sizeForUsers={60,75,85,95,105,110,120,130,135};
         int[] sizeForSystem={250};
         int[] sizeForSysax={68};
         int[] sizeForUndotbs1={80};
-        int[] sizeForUsers02={50,55,60,65};
+        int[] sizeForUsers02={50,60,65,80,85,90,95,100};
         int[] sizeForSystem02={200};
-        int[] sizeForIndex={60,65,70,75};
+        int[] sizeForIndex={60,65,70,75,80,90,95,100,105,110};
+        int[] sizeForUsrPicture={60};
+        int[] sizeForTemp={950};
         
         TABLESPACE_SIZES.put(TBS_USERS, sizeForUsers);
+        TABLESPACE_SIZES.put(TBS_USERS02, sizeForUsers02);
         TABLESPACE_SIZES.put(TBS_SYSAUX, sizeForSysax);
         TABLESPACE_SIZES.put(TBS_SYSTEM, sizeForSystem);
-        TABLESPACE_SIZES.put(TBS_UNDOTBS1, sizeForUndotbs1);
-        TABLESPACE_SIZES.put(TBS_USERS02, sizeForUsers02);
         TABLESPACE_SIZES.put(TBS_SYSTEM02, sizeForSystem02);
+        TABLESPACE_SIZES.put(TBS_UNDOTBS1, sizeForUndotbs1);
         TABLESPACE_SIZES.put(TBS_INDX, sizeForIndex);
+        TABLESPACE_SIZES.put(TBS_TEMP, sizeForTemp);
+        TABLESPACE_SIZES.put(TBS_USRPICTURE, sizeForUsrPicture);
     }
     
     public String getIndexScript(String indexName){
