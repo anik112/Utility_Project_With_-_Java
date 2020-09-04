@@ -5,9 +5,13 @@
  */
 package core;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.SwingWorker;
@@ -162,7 +166,7 @@ public class Controller extends SwingWorker<Void, String> implements Core {
                 check = false;
             }
             if (check) {
-                firePropertyChange("writeConsole", null, "> All index script are 16k --!\n");
+                firePropertyChange("writeConsole", null, "\n> All index script are 16k --!\n");
             }
         } catch (SQLException ex) {
             firePropertyChange("writeConsole", null, "# updateTableIndex() function dose not work.\n");
@@ -243,13 +247,17 @@ public class Controller extends SwingWorker<Void, String> implements Core {
      */
     @Override
     protected Void doInBackground() throws Exception {
-        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
-        updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
-        firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
-        updateTableIndex(OraDbConnection.connection());
-        firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
-        rebuildTableScript(OraDbConnection.connection());
-        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
+        firePropertyChange("writeConsole", null, "\n> Start Database Backup Processing ...\n");
+        Process process = Runtime.getRuntime().exec("exp payroll/payroll@payroll file=D:\\" + System.currentTimeMillis() + ".dmp");
+        
+        firePropertyChange("writeConsole", null, "\n> Database Backup Success. !\n");
+//        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
+//        updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
+//        firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
+//        updateTableIndex(OraDbConnection.connection());
+//        firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
+//        rebuildTableScript(OraDbConnection.connection());
+//        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
         return null;
     }
 
