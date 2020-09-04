@@ -16,8 +16,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,6 +36,9 @@ public class DrawOnLabel extends javax.swing.JFrame {
     int boxCount = 1;
     int moverCount = 0;
     float lineThickness = 2;
+    File selectedFolder;
+    int imageCount = 0;
+    File[] listOfFile;
 
     /**
      * Creates new form DrawOnLabel
@@ -57,6 +63,10 @@ public class DrawOnLabel extends javax.swing.JFrame {
         tblShowPoint = new javax.swing.JTable();
         btnNext = new javax.swing.JButton();
         btnPrevious = new javax.swing.JButton();
+        btnSelectFolder = new javax.swing.JButton();
+        lblShowURLpath = new javax.swing.JLabel();
+        btnImagePrev = new javax.swing.JButton();
+        btnImageNext = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Image Teging");
@@ -119,6 +129,31 @@ public class DrawOnLabel extends javax.swing.JFrame {
             }
         });
 
+        btnSelectFolder.setText("Select folder");
+        btnSelectFolder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectFolderActionPerformed(evt);
+            }
+        });
+
+        lblShowURLpath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnImagePrev.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnImagePrev.setText("<< Img");
+        btnImagePrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImagePrevActionPerformed(evt);
+            }
+        });
+
+        btnImageNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnImageNext.setText("Img >>");
+        btnImageNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImageNextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,32 +161,46 @@ public class DrawOnLabel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnImagePrev)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnImageNext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPrevious)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNext)
-                        .addGap(36, 36, 36)
+                        .addGap(18, 18, 18)
                         .addComponent(lblSize, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSelectFolder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblShowURLpath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBoard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblBoard, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnImageNext)
+                            .addComponent(btnImagePrev)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                                 .addComponent(btnNext)
                                 .addComponent(btnPrevious))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
+                    .addComponent(btnSelectFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblShowURLpath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -159,16 +208,7 @@ public class DrawOnLabel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try {
-            // TODO add your handling code here:
-            BufferedImage image = ImageIO.read(new File("C:\\Users\\Anik\\Downloads\\IMG_20200814_030626.jpg"));
-            //Icon icon=new ImageIcon("C:\\Users\\Anik\\Downloads\\IMG_20200814_030626.jpg");
-            Image i = image.getScaledInstance(lblBoard.getWidth(), lblBoard.getHeight(), Image.SCALE_SMOOTH);
-            lblBoard.setIcon(new ImageIcon(i));
-            model = (DefaultTableModel) tblShowPoint.getModel();
-        } catch (IOException ex) {
-            Logger.getLogger(DrawOnLabel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_formWindowOpened
 
     private void lblBoardMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBoardMousePressed
@@ -233,6 +273,57 @@ public class DrawOnLabel extends javax.swing.JFrame {
         updateDrawingRect((Graphics2D) lblBoard.getGraphics(), "Prev");
     }//GEN-LAST:event_btnPreviousActionPerformed
 
+    private void btnImagePrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagePrevActionPerformed
+        // TODO add your handling code here:
+        if (listOfFile.length > 0) {
+            imageCount--;
+            String curpath = listOfFile[imageCount].getAbsolutePath();
+            System.out.println("=>> "+listOfFile[imageCount].getName());
+            if (curpath.contains(".jpeg") || curpath.contains(".jpg") || curpath.contains(".png")) {
+                showImage(listOfFile[imageCount]);
+                System.out.println(listOfFile[imageCount].getName());
+            }
+        }
+    }//GEN-LAST:event_btnImagePrevActionPerformed
+
+    private void btnImageNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImageNextActionPerformed
+        // TODO add your handling code here:
+        if (listOfFile.length > 0) {
+            imageCount++;
+            String curpath = listOfFile[imageCount].getAbsolutePath();
+            System.out.println("=>> "+listOfFile[imageCount].getName());
+            if (curpath.contains(".jpeg") || curpath.contains(".jpg") || curpath.contains(".png")) {
+                showImage(listOfFile[imageCount]);
+                System.out.println(listOfFile[imageCount].getName());
+            }
+        }
+    }//GEN-LAST:event_btnImageNextActionPerformed
+
+    private void btnSelectFolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectFolderActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser("");
+        chooser.showSaveDialog(null);
+
+        try {
+            selectedFolder = chooser.getCurrentDirectory();
+            lblShowURLpath.setText(selectedFolder.getPath());
+            listOfFile = selectedFolder.listFiles();
+            String curpath = listOfFile[imageCount].getAbsolutePath();
+            if (curpath.contains(".jpeg") || curpath.contains(".jpg") || curpath.contains(".png")) {
+                showImage(listOfFile[imageCount]);
+                System.out.println(listOfFile[imageCount].getName());
+            }
+            //System.out.println("=> " + fileSavingLocation);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(
+                    null, "Please select the file.",
+                    ":: File Error-102 :: ", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_btnSelectFolderActionPerformed
+
     private void updateDrawingRect(Graphics2D g, String key) {
         try {
             if (key.endsWith("Next")) {
@@ -256,13 +347,31 @@ public class DrawOnLabel extends javax.swing.JFrame {
         }
     }
 
+    private void showImage(File f) {
+        try {
+            lblBoard.removeAll();
+            // TODO add your handling code here:
+            BufferedImage image = ImageIO.read(f);
+            //Icon icon=new ImageIcon("C:\\Users\\Anik\\Downloads\\IMG_20200814_030626.jpg");
+            Image i = image.getScaledInstance(lblBoard.getWidth(), lblBoard.getHeight(), Image.SCALE_SMOOTH);
+            lblBoard.setIcon(new ImageIcon(i));
+            model = (DefaultTableModel) tblShowPoint.getModel();
+        } catch (IOException ex) {
+            Logger.getLogger(DrawOnLabel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnImageNext;
+    private javax.swing.JButton btnImagePrev;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrevious;
+    private javax.swing.JButton btnSelectFolder;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBoard;
+    private javax.swing.JLabel lblShowURLpath;
     private javax.swing.JLabel lblSize;
     private javax.swing.JTable tblShowPoint;
     // End of variables declaration//GEN-END:variables
