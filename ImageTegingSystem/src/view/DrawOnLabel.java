@@ -216,7 +216,21 @@ public class DrawOnLabel extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(lblBoard, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnNext)
+                        .addComponent(btnPrevious))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnImageNext)
+                        .addComponent(btnImagePrev))
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSelectFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblShowURLpath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 21c674750f02d234013913db3fd40ae81caf59f8
                 .addContainerGap())
         );
 
@@ -371,9 +385,14 @@ public class DrawOnLabel extends javax.swing.JFrame {
 
     private void showImage(File f) {
         try {
+<<<<<<< HEAD
             lblBoard.removeAll();
             lblBoard.repaint();
             lblBoard.revalidate();
+=======
+            lblBoard.remove(lblBoard.get);
+            // TODO add your handling code here:
+>>>>>>> 21c674750f02d234013913db3fd40ae81caf59f8
             BufferedImage image = ImageIO.read(f);
             //Icon icon=new ImageIcon("C:\\Users\\Anik\\Downloads\\IMG_20200814_030626.jpg");
             Image i = image.getScaledInstance(lblBoard.getWidth(), lblBoard.getHeight(), Image.SCALE_DEFAULT);

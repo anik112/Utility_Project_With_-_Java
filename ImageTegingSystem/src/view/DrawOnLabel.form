@@ -52,7 +52,24 @@
                   <Component id="lblBoard" min="-2" pref="650" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+=======
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblSize" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnPrevious" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnImageNext" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnImagePrev" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnClear" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="btnSelectFolder" max="32767" attributes="0"/>
+                  <Component id="lblShowURLpath" max="32767" attributes="0"/>
+              </Group>
+>>>>>>> 21c674750f02d234013913db3fd40ae81caf59f8
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
