@@ -1,0 +1,1 @@
+exp payroll/payroll@payroll file=D:\12.dmp & exit

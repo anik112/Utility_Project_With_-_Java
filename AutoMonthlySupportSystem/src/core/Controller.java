@@ -248,8 +248,9 @@ public class Controller extends SwingWorker<Void, String> implements Core {
     @Override
     protected Void doInBackground() throws Exception {
         firePropertyChange("writeConsole", null, "\n> Start Database Backup Processing ...\n");
-        Process process = Runtime.getRuntime().exec("exp payroll/payroll@payroll file=D:\\" + System.currentTimeMillis() + ".dmp");
-        
+        Process process = Runtime.getRuntime().exec("D:\\All_Program\\Utility_Project_With_-_Java\\AutoMonthlySupportSystem\\backup.bat");
+        // process = Runtime.getRuntime().exec("exp payroll/payroll@payroll file=D:\\" + System.currentTimeMillis() + ".dmp & exit");
+        //System.out.println(process.waitFor());
         firePropertyChange("writeConsole", null, "\n> Database Backup Success. !\n");
 //        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
 //        updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
