@@ -195,6 +195,8 @@ public class SQLEditeor extends javax.swing.JFrame {
             isValied = true;
         } else if (sql.indexOf("SELECT") >= 0) {
             isValied = true;
+        } else if (sql.indexOf("Select") >= 0) {
+            isValied = true;
         } else {
             isValied = false;
         }

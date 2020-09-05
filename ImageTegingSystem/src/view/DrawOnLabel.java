@@ -192,13 +192,12 @@ public class DrawOnLabel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblSize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnImageNext)
-                            .addComponent(btnImagePrev)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnNext)
-                                .addComponent(btnPrevious))))
+                        .addComponent(btnNext)
+                        .addComponent(btnPrevious))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnImageNext)
+                        .addComponent(btnImagePrev))
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSelectFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblShowURLpath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -349,7 +348,7 @@ public class DrawOnLabel extends javax.swing.JFrame {
 
     private void showImage(File f) {
         try {
-            lblBoard.removeAll();
+            lblBoard.remove(lblBoard.get);
             // TODO add your handling code here:
             BufferedImage image = ImageIO.read(f);
             //Icon icon=new ImageIcon("C:\\Users\\Anik\\Downloads\\IMG_20200814_030626.jpg");

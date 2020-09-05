@@ -23,35 +23,36 @@ public class Test {
     
     public static void main(String args[]){
      
-        Connection connection=DBConnection.getConnection();
-              
-        try {
-            PreparedStatement statement=connection.prepareCall("select per.cardno, per.empname, per.designation,per .sectionnm,per.lineno,per. salary_grade, per.joining_date,per.grosssalary ,other.PERFORMANCE\n" +
-"from TB_PERSONAL_INFO_OTHER other, TB_PERSONAL_INFO per\n" +
-"where per.COMPANY = other.COMPANY\n" +
-"and   per.cardno  = other.cardno\n" +
-"and   per.active  = 0\n" +
-"order by per.cardno asc");
-            ResultSet rs=statement.executeQuery();
-            ResultSetMetaData metaData=rs.getMetaData();
-            do{
-                System.out.println(metaData.getColumnName(1));
-                System.out.println("=>"+metaData.getColumnCount());
-                if(metaData.getColumnType(2)==Types.VARCHAR){
-                    System.out.println("==> Straig");
-                }
-            }while (false);
-            int i=1;
-            while (rs.next()) {                
-                System.out.println(rs.getString(1));
-                i++;
-            }
-            System.out.println("Total data: "+i);
-        } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        Connection connection=DBConnection.getConnection();
+//              
+//        try {
+//            PreparedStatement statement=connection.prepareCall("select per.cardno, per.empname, per.designation,per .sectionnm,per.lineno,per. salary_grade, per.joining_date,per.grosssalary ,other.PERFORMANCE\n" +
+//"from TB_PERSONAL_INFO_OTHER other, TB_PERSONAL_INFO per\n" +
+//"where per.COMPANY = other.COMPANY\n" +
+//"and   per.cardno  = other.cardno\n" +
+//"and   per.active  = 0\n" +
+//"order by per.cardno asc");
+//            ResultSet rs=statement.executeQuery();
+//            ResultSetMetaData metaData=rs.getMetaData();
+//            do{
+//                System.out.println(metaData.getColumnName(1));
+//                System.out.println("=>"+metaData.getColumnCount());
+//                if(metaData.getColumnType(2)==Types.VARCHAR){
+//                    System.out.println("==> Straig");
+//                }
+//            }while (false);
+//            int i=1;
+//            while (rs.next()) {                
+//                System.out.println(rs.getString(1));
+//                i++;
+//            }
+//            System.out.println("Total data: "+i);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-        
+        String data="1996-07-05 00:00:00.0";
+        System.out.println(data.substring(8, 10)+"/"+data.substring(5, 7)+"/"+data.substring(0, 4));
         
     }
 }

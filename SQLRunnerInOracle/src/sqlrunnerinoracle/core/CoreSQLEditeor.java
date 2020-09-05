@@ -68,14 +68,25 @@ public class CoreSQLEditeor {
                 // Run loop to write column data from this sql
                 while (cellIndex != metaData.getColumnCount()) {
                     cell[cellIndex] = rowCh.createCell(cellIndex);
-                    cell[cellIndex].setCellValue(dataSet.getString(cellIndex + 1));
-                    cellIndex++;
+
+                    String data = " ";
+                    data = dataSet.getString(cellIndex + 1);
+
+                    int colType = 0;
+                    colType = metaData.getColumnType(cellIndex + 1);
+                    // 93-> Timestamp, 91-> Date
+                    try {
+                        if ((colType == 93) || (colType == 91) && (data.length() > 9)) {
+                            data = (data.substring(8, 10) + "/" + data.substring(5, 7) + "/" + data.substring(0, 4));
+                        }
+                    } catch (Exception e) {
+                        data = " ";
+                    } finally {
+                        cell[cellIndex].setCellValue(data);
+                        cellIndex++;
+                    }
                 }
-//                System.out.println(rowIndex + " -- " + dataSet.getString(1)
-//                        + " ---- " + dataSet.getString(2)
-//                        + " ---- " + dataSet.getString(3));
             }
-            //System.out.println("Total Row Patch: " + rowIndex);
 
             FileOutputStream fos = new FileOutputStream(savingLoc); // Open file by FOS
             workbook.write(fos); // write data in xls file

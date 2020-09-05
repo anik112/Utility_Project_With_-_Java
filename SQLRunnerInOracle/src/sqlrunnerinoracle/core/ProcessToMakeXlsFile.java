@@ -80,7 +80,12 @@ public class ProcessToMakeXlsFile extends SwingWorker<Boolean, Integer> {
                 // Run loop to write column data from this sql
                 while (cellIndex != metaData.getColumnCount()) {
                     cell[cellIndex] = rowCh.createCell(cellIndex);
-                    cell[cellIndex].setCellValue(dataSet.getString(cellIndex + 1));
+                    String data=dataSet.getString(cellIndex + 1);
+                    if(metaData.getColumnType(cellIndex)==91){
+                        System.out.println("-> "+data);
+                        //String date=data.substring(8, 10)+"/"+data.substring(5, 7)+"/"+data.substring(0, 4);
+                    }
+                    cell[cellIndex].setCellValue(data);
                     cellIndex++;
                 }
 //                System.out.println(rowIndex + " -- " + dataSet.getString(1)
