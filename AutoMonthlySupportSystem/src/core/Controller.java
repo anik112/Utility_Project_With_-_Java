@@ -5,15 +5,14 @@
  */
 package core;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.Format;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingWorker;
 import model.GetUtilityData;
 import model.OraDbConnection;
@@ -67,56 +66,56 @@ public class Controller extends SwingWorker<Void, String> implements Core {
         if (lList.TBS_USERS.equals(tableSpaceFileName)) { // This for USERS01 table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_USERS);
             if (backupSize > 0 && backupSize < 501) {
-                return (usedSize + siz[0]);
+                return ((int) usedSize) + siz[0];
             } else if (backupSize > 500 && backupSize < 800) {
-                return (usedSize + siz[1]);
+                return ((int) usedSize) + siz[1];
             } else if (backupSize > 799 && backupSize < 1024) {
-                return (usedSize + siz[2]);
+                return ((int) usedSize) + siz[2];
             } else if (backupSize > 1023 && backupSize < 1536) {
-                return usedSize + siz[3];
+                return ((int) usedSize) + siz[3];
             } else if (backupSize > 1535 && backupSize < 2048) {
-                return usedSize + siz[4];
+                return ((int) usedSize) + siz[4];
             } else if (backupSize > 2047 && backupSize < 2867) {
-                return usedSize + siz[5];
+                return ((int) usedSize) + siz[5];
             } else if (backupSize > 2867 && backupSize < 3072) {
-                return usedSize + siz[6];
+                return ((int) usedSize) + siz[6];
             } else if (backupSize > 3071 && backupSize < 4096) {
-                return usedSize + siz[7];
+                return ((int) usedSize) + siz[7];
             }
         } else if (lList.TBS_USERS02.equals(tableSpaceFileName)) { // This for USER02 table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_USERS);
             if (backupSize > 0 && backupSize < 501) {
-                return (usedSize + siz[0]);
+                return ((int) usedSize) + siz[0];
             } else if (backupSize > 500 && backupSize < 800) {
-                return (usedSize + siz[1]);
+                return ((int) usedSize) + siz[1];
             } else if (backupSize > 799 && backupSize < 1024) {
-                return (usedSize + siz[2]);
+                return ((int) usedSize) + siz[2];
             } else if (backupSize > 1023 && backupSize < 1536) {
-                return usedSize + siz[3];
+                return ((int) usedSize) + siz[3];
             } else if (backupSize > 1535 && backupSize < 2048) {
-                return usedSize + siz[4];
+                return ((int) usedSize) + siz[4];
             } else if (backupSize > 2047 && backupSize < 2867) {
-                return usedSize + siz[5];
+                return ((int) usedSize) + siz[5];
             } else if (backupSize > 2867 && backupSize < 3072) {
-                return usedSize + siz[6];
+                return ((int) usedSize) + siz[6];
             } else if (backupSize > 3071 && backupSize < 4096) {
-                return usedSize + siz[7];
+                return ((int) usedSize) + siz[7];
             }
         } else if (lList.TBS_SYSTEM.equals(tableSpaceFileName)) { // This for SYSTEM01 table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_SYSTEM);
-            return (usedSize + siz[0]);
+            return ((int) usedSize) + siz[0];
         } else if (lList.TBS_SYSTEM02.equals(tableSpaceFileName)) { // This for SYSTEM02 table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_SYSTEM02);
-            return (usedSize + siz[0]);
+            return ((int) usedSize) + siz[0];
         } else if (lList.TBS_SYSAUX.equals(tableSpaceFileName)) { // This for SYSAUX table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_SYSAUX);
-            return (usedSize + siz[0]);
+            return ((int) usedSize) + siz[0];
         } else if (lList.TBS_UNDOTBS1.equals(tableSpaceFileName)) { // This for UNDOTTBS1 table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_UNDOTBS1);
-            return (usedSize + siz[0]);
+            return ((int) usedSize) + siz[0];
         } else if (lList.TBS_USRPICTURE.equals(tableSpaceFileName)) { // This for USRPICTURE table space
             int[] siz = lList.TABLESPACE_SIZES.get(lList.TBS_USRPICTURE);
-            return (usedSize + siz[0]);
+            return ((int) usedSize) + siz[0];
         }
 
         return updateSize + freeSize;
@@ -193,6 +192,8 @@ public class Controller extends SwingWorker<Void, String> implements Core {
     public void rebuildTableScript(Connection con) {
         try {
             boolean check = true;
+            data.updateSQL(con, lList.RESIZE_CURSOR_SIZE);
+            firePropertyChange("writeConsole", null, "> Update cursore size in 2000!\n");
             ResultSet set = data.getDataFromSQL(con, lList.SELECT_TABLE_UPTO_16);
             while (set.next()) {
                 Connection connection = con;
@@ -239,6 +240,16 @@ public class Controller extends SwingWorker<Void, String> implements Core {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+    private void getDataBackup(){
+        try {
+            Process process = Runtime.getRuntime().exec("backup.bat");
+            // process = Runtime.getRuntime().exec("exp payroll/payroll@payroll file=D:\\" + System.currentTimeMillis() + ".dmp & exit");
+            //System.out.println(process.waitFor());
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This function work in backround by using Thred when main window runing.
      *
@@ -248,17 +259,15 @@ public class Controller extends SwingWorker<Void, String> implements Core {
     @Override
     protected Void doInBackground() throws Exception {
         firePropertyChange("writeConsole", null, "\n> Start Database Backup Processing ...\n");
-        Process process = Runtime.getRuntime().exec("D:\\All_Program\\Utility_Project_With_-_Java\\AutoMonthlySupportSystem\\backup.bat");
-        // process = Runtime.getRuntime().exec("exp payroll/payroll@payroll file=D:\\" + System.currentTimeMillis() + ".dmp & exit");
-        //System.out.println(process.waitFor());
+        getDataBackup();
         firePropertyChange("writeConsole", null, "\n> Database Backup Success. !\n");
-//        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
-//        updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
-//        firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
-//        updateTableIndex(OraDbConnection.connection());
-//        firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
-//        rebuildTableScript(OraDbConnection.connection());
-//        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
+        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
+        updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
+        firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
+        updateTableIndex(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
+        rebuildTableScript(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
         return null;
     }
 

@@ -7,7 +7,7 @@ package main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.DrawOnLabel;
+import view.ImageSelector;
 
 /**
  *
@@ -25,9 +25,9 @@ public class Apps extends Application {
                 }
             }
         } catch (Exception ex) {
-            java.util.logging.Logger.getLogger(DrawOnLabel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println("From not load.");
         }
-        new DrawOnLabel().setVisible(true);
+        new ImageSelector().setVisible(true);
     }
 
     /**

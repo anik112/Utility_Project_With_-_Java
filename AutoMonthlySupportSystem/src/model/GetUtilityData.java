@@ -96,7 +96,7 @@ public class GetUtilityData {
             statement.executeUpdate();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, 
-                    "<html><body><p style='width: 200px;'>"+sql+"\n> "+e.getMessage()+"</p></body></html>",
+                    "<html><body><p style='width: 200px;'>"+sql+"\n> "+e.getMessage(),
                     "UPDATE_SQL", JOptionPane.ERROR_MESSAGE);
             return false;
         }

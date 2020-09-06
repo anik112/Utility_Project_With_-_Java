@@ -41,7 +41,7 @@ public class SQLList {
                                             "WHERE DATA_FILES.FILE_ID=FREE_SPACE.FILE_ID \n" +
                                             "GROUP BY DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES";
     public final String SET_LINE_SIZE="SET LINESIZE 200";
-    
+    public final String RESIZE_CURSOR_SIZE="alter system set open_cursors = 2000 scope=both";
     
     public SQLList() {
         setAllSpaceSize();
@@ -56,15 +56,15 @@ public class SQLList {
     }
     
     private void setAllSpaceSize(){
-        int[] sizeForUsers={60,75,85,95,105,110,120,130,135};
-        int[] sizeForSystem={250};
-        int[] sizeForSysax={68};
-        int[] sizeForUndotbs1={80};
-        int[] sizeForUsers02={50,60,65,80,85,90,95,100};
-        int[] sizeForSystem02={200};
-        int[] sizeForIndex={60,65,70,75,80,90,95,100,105,110};
-        int[] sizeForUsrPicture={60};
-        int[] sizeForTemp={950};
+        int[] sizeForUsers={61,76,86,96,106,111,121,131,136};
+        int[] sizeForSystem={251};
+        int[] sizeForSysax={69};
+        int[] sizeForUndotbs1={81};
+        int[] sizeForUsers02={51,61,66,81,86,91,96,101};
+        int[] sizeForSystem02={201};
+        int[] sizeForIndex={61,66,71,76,81,91,96,101,106,111};
+        int[] sizeForUsrPicture={61};
+        int[] sizeForTemp={951};
         
         TABLESPACE_SIZES.put(TBS_USERS, sizeForUsers);
         TABLESPACE_SIZES.put(TBS_USERS02, sizeForUsers02);
