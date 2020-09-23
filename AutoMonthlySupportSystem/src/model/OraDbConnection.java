@@ -21,7 +21,7 @@ public class OraDbConnection {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             //"jdbc:oracle:thin:@localhost:1521:zktbiotime","zktadmin","Admin007
             Connection connOra = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:payroll","payroll", "payroll");
-            System.out.println("::: It's Works ---> Oracle :::");
+            System.out.println("----::: Connected with Oracle :::----");
             return connOra;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null," Please Check Database and User Name/Password",

@@ -81,7 +81,9 @@ public class MainView extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Databackup Size:");
 
+        txtBackupSize.setEditable(false);
         txtBackupSize.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
+        txtBackupSize.setText("Free");
         txtBackupSize.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans", 0, 11)); // NOI18N
@@ -212,22 +214,21 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnProcessStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessStartActionPerformed
         // TODO add your handling code here:
-        System.out.println("----> click");
-        if (Integer.valueOf(txtBackupSize.getText()) > 0) {
-            try {
-                Controller pmw = new Controller(Integer.valueOf(txtBackupSize.getText()));
-                pmw.addPropertyChangeListener(new PropertyChangeListener() {
-                    @Override
-                    public void propertyChange(PropertyChangeEvent evt1) {
-                        consoleText += evt1.getNewValue().toString();
-                        console.setText(consoleText);
-                    }
-                });
-                pmw.execute();
-            } catch (Exception ex) {
-                Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        //if (Integer.valueOf(txtBackupSize.getText()) > 0) {
+        try {
+            Controller pmw = new Controller(200);
+            pmw.addPropertyChangeListener(new PropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent evt1) {
+                    consoleText += evt1.getNewValue().toString();
+                    console.setText(consoleText);
+                }
+            });
+            pmw.execute();
+        } catch (Exception ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //}
     }//GEN-LAST:event_btnProcessStartActionPerformed
 
 

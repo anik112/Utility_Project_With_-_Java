@@ -160,6 +160,7 @@ public class Controller extends SwingWorker<Void, String> implements Core {
             while (set.next()) {
                 // get index alter sql
                 String sql = lList.getAlterIndexScriptForResize(set.getString(1), set.getString(4), 16);
+                System.out.println(sql);
                 data.updateSQL(connection, sql); // run sql
                 firePropertyChange("writeConsole", null, "\n> INEX == " + set.getString(4) + " == [ Update ]");
                 check = false;
@@ -192,8 +193,6 @@ public class Controller extends SwingWorker<Void, String> implements Core {
     public void rebuildTableScript(Connection con) {
         try {
             boolean check = true;
-            data.updateSQL(con, lList.RESIZE_CURSOR_SIZE);
-            firePropertyChange("writeConsole", null, "> Update cursore size in 2000!\n");
             ResultSet set = data.getDataFromSQL(con, lList.SELECT_TABLE_UPTO_16);
             while (set.next()) {
                 Connection connection = con;
@@ -202,6 +201,8 @@ public class Controller extends SwingWorker<Void, String> implements Core {
                 while (rs.next()) {
                     firePropertyChange("writeConsole", null, "> TABLE == " + tableName + "\n");
                     String tableScript = data.getTableScript(connection, tableName);
+                    String indexScript = data.getIndexScriptByTableName(connection, tableName);
+
                     if (!tableScript.contains("BLOB")) {
                         int loc = tableScript.indexOf("INITIAL") + 8;
                         int endLoc = tableScript.indexOf("NEXT");
@@ -216,14 +217,22 @@ public class Controller extends SwingWorker<Void, String> implements Core {
                                     firePropertyChange("writeConsole", null, "> Update data one table to another.\n");
                                     if (data.updateSQL(connection, lList.getDeleteTableScript(tableName + "_X"))) {
                                         System.out.println("> Table deleted " + tableName + "_X");
-                                        firePropertyChange("writeConsole", null, "> Table deleted " + tableName + "_X\n\n");
+                                        firePropertyChange("writeConsole", null, "> Table deleted " + tableName + "_X\n");
+                                        if (indexScript.length() > 5) {
+                                            if (data.updateSQL(connection, indexScript)) {
+                                                firePropertyChange("writeConsole", null, "> Create new index --!\n\n");
+                                            }
+                                        } else {
+                                            firePropertyChange("writeConsole", null, "> No index of this table --!\n\n");
+                                        }
                                     }
                                 }
                             }
                         }
 
+                    } else {
+                        firePropertyChange("writeConsole", null, "$ This table work with Image.\n\n");
                     }
-                    firePropertyChange("writeConsole", null, "$ This table work with Image.\n");
                 }
                 check = false;
             }
@@ -240,8 +249,7 @@ public class Controller extends SwingWorker<Void, String> implements Core {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    private void getDataBackup(){
+    private void getDataBackup() {
         try {
             Process process = Runtime.getRuntime().exec("backup.bat");
             // process = Runtime.getRuntime().exec("exp payroll/payroll@payroll file=D:\\" + System.currentTimeMillis() + ".dmp & exit");
@@ -250,6 +258,7 @@ public class Controller extends SwingWorker<Void, String> implements Core {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * This function work in backround by using Thred when main window runing.
      *
@@ -260,13 +269,16 @@ public class Controller extends SwingWorker<Void, String> implements Core {
     protected Void doInBackground() throws Exception {
         firePropertyChange("writeConsole", null, "\n> Start Database Backup Processing ...\n");
         getDataBackup();
-        firePropertyChange("writeConsole", null, "\n> Database Backup Success. !\n");
-        firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
-        updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
-        firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
+        firePropertyChange("writeConsole", null, "\n> Database Backup Success. !\n\n");
+        //firePropertyChange("writeConsole", null, "\n> Start TABLESPACE Processing ...\n");
+        //updateTableSpace(OraDbConnection.connection(), databackupSizeInMb);
+        //firePropertyChange("writeConsole", null, "> TABLESPACE Update ...\n");
+        data.updateSQL(OraDbConnection.connection(), lList.RESIZE_CURSOR_SIZE);
+        firePropertyChange("writeConsole", null, "> Update cursor size in 3000!\n");
+        firePropertyChange("writeConsole", null, "> INDEX Update Processing ...\n");
         updateTableIndex(OraDbConnection.connection());
         firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
-        rebuildTableScript(OraDbConnection.connection());
+        //rebuildTableScript(OraDbConnection.connection());
         firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
         return null;
     }

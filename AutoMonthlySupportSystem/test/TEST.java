@@ -80,6 +80,8 @@ public class TEST {
 //        }
         System.out.println(Math.round(12.90));
         System.out.println(Math.round((int) 12.90));
+        
+        new GetOnlyScript().getScriptFormDatabase();
     }
 
 }

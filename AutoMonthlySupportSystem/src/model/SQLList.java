@@ -41,7 +41,7 @@ public class SQLList {
                                             "WHERE DATA_FILES.FILE_ID=FREE_SPACE.FILE_ID \n" +
                                             "GROUP BY DATA_FILES.TABLESPACE_NAME,DATA_FILES.FILE_NAME, DATA_FILES.BYTES";
     public final String SET_LINE_SIZE="SET LINESIZE 200";
-    public final String RESIZE_CURSOR_SIZE="alter system set open_cursors = 2000 scope=both";
+    public final String RESIZE_CURSOR_SIZE="alter system set open_cursors=3000 scope=both";
     
     public SQLList() {
         setAllSpaceSize();
@@ -105,6 +105,10 @@ public class SQLList {
         return "DROP TABLE "+tableName;
     }
     
+    
+   public String getIndexNameByTableScript(String tableName){
+       return "SELECT INDEX_NAME FROM ALL_INDEXES WHERE OWNER='PAYROLL' AND TABLE_NAME='"+tableName+"'";
+   }
 }
 
 
