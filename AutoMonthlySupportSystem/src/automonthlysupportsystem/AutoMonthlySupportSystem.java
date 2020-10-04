@@ -5,15 +5,8 @@
  */
 package automonthlysupportsystem;
 
-import core.Controller;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import model.OraDbConnection;
 import view.MainView;
 
 /**
