@@ -5,7 +5,6 @@
  */
 package netleb4;
 
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -27,19 +26,19 @@ public class NetLeb4 {
             // URL object for open HTTP connection in server
             URL url=new URL(svUrl);
             // Make HTTP Connection for using GET & POST method
-            // Frist we get 
+            // Frist we get url connection then cust in Https Connection
             HttpURLConnection con= (HttpURLConnection) url.openConnection();
-            
+            // Set the communication method
             con.setRequestMethod("GET");
+            // Check connetion is ok or not
+            // If it get 200 that mean connection successfull or it get 404
+            // that's mean connection is unsuccessfull
             if(con.getResponseCode()==200){
+                // Print status
                 System.out.println(":: Connected ::");
-                
+                // print response massage
                 System.out.println(con.getResponseMessage());
-                
-                InputStream stream=con.getInputStream();
-                System.out.println(stream);
             }
-            System.out.println(con.getResponseCode());
             
         }catch(Exception e){
             e.printStackTrace();
