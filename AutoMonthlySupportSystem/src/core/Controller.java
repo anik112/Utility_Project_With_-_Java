@@ -278,8 +278,8 @@ public class Controller extends SwingWorker<Void, String> implements Core {
         firePropertyChange("writeConsole", null, "> INDEX Update Processing ...\n");
         updateTableIndex(OraDbConnection.connection());
         firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
-        rebuildTableScript(OraDbConnection.connection());
-        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
+        //rebuildTableScript(OraDbConnection.connection());
+        //firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
         return null;
     }
 
