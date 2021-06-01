@@ -21,7 +21,7 @@ namespace DIUTask.core
                 string connectionString = @"server=localhost;port=3306;database=diutask;userid=root;default command timeout=20";
                 cnn = new MySqlConnection(connectionString);
                 cnn.Open();
-                MessageBox.Show("Connection Open");
+                //MessageBox.Show("Connection Open");
             }
             catch (Exception ex)
             {
