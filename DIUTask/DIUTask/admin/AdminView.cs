@@ -50,5 +50,25 @@ namespace DIUTask.admin
             }
             
         }
+
+        private void AdminView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMainUpload_Click(object sender, EventArgs e)
+        {
+            openFileDialogBox.ShowDialog();
+            if (openFileDialogBox.CheckFileExists)
+            {
+                new MainCartificateModel().uploadMainCartificateFileName(openFileDialogBox.FileName, txtMainRegNumber.Text);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            showTempCartificateData();
+            showMainCartificateData();
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace DIUTask.student
             this.panel6 = new System.Windows.Forms.Panel();
             this.checkBoxMinNotAvailable = new System.Windows.Forms.CheckBox();
             this.checkBoxMainAvailable = new System.Windows.Forms.CheckBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnMainDownload = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.checkBoxTempNotAvailable = new System.Windows.Forms.CheckBox();
@@ -44,6 +44,9 @@ namespace DIUTask.student
             this.label22 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -67,6 +70,9 @@ namespace DIUTask.student
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -95,7 +101,6 @@ namespace DIUTask.student
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.openFileDialogBox = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogBox = new System.Windows.Forms.FolderBrowserDialog();
             this.tabCartificateStatus.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -114,10 +119,11 @@ namespace DIUTask.student
             this.tabCartificateStatus.Controls.Add(this.tabPage1);
             this.tabCartificateStatus.Controls.Add(this.tabPage2);
             this.tabCartificateStatus.Controls.Add(this.tabPage3);
-            this.tabCartificateStatus.Location = new System.Drawing.Point(2, 2);
+            this.tabCartificateStatus.Location = new System.Drawing.Point(1, 1);
+            this.tabCartificateStatus.Margin = new System.Windows.Forms.Padding(2);
             this.tabCartificateStatus.Name = "tabCartificateStatus";
             this.tabCartificateStatus.SelectedIndex = 0;
-            this.tabCartificateStatus.Size = new System.Drawing.Size(1068, 589);
+            this.tabCartificateStatus.Size = new System.Drawing.Size(712, 383);
             this.tabCartificateStatus.TabIndex = 0;
             this.tabCartificateStatus.SelectedIndexChanged += new System.EventHandler(this.tabCartificateStatus_SelectedIndexChanged);
             // 
@@ -127,10 +133,11 @@ namespace DIUTask.student
             this.tabPage1.Controls.Add(this.panel6);
             this.tabPage1.Controls.Add(this.panel5);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1060, 556);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(704, 357);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Deshboard";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -139,9 +146,10 @@ namespace DIUTask.student
             // 
             this.lblRegNumber.AutoSize = true;
             this.lblRegNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRegNumber.Location = new System.Drawing.Point(643, 40);
+            this.lblRegNumber.Location = new System.Drawing.Point(429, 26);
+            this.lblRegNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegNumber.Name = "lblRegNumber";
-            this.lblRegNumber.Size = new System.Drawing.Size(15, 22);
+            this.lblRegNumber.Size = new System.Drawing.Size(12, 15);
             this.lblRegNumber.TabIndex = 5;
             this.lblRegNumber.Text = " ";
             // 
@@ -151,19 +159,21 @@ namespace DIUTask.student
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.checkBoxMinNotAvailable);
             this.panel6.Controls.Add(this.checkBoxMainAvailable);
-            this.panel6.Controls.Add(this.button4);
+            this.panel6.Controls.Add(this.btnMainDownload);
             this.panel6.Controls.Add(this.label23);
-            this.panel6.Location = new System.Drawing.Point(592, 132);
+            this.panel6.Location = new System.Drawing.Point(395, 86);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(284, 178);
+            this.panel6.Size = new System.Drawing.Size(190, 116);
             this.panel6.TabIndex = 4;
             // 
             // checkBoxMinNotAvailable
             // 
             this.checkBoxMinNotAvailable.AutoSize = true;
-            this.checkBoxMinNotAvailable.Location = new System.Drawing.Point(142, 62);
+            this.checkBoxMinNotAvailable.Location = new System.Drawing.Point(95, 40);
+            this.checkBoxMinNotAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxMinNotAvailable.Name = "checkBoxMinNotAvailable";
-            this.checkBoxMinNotAvailable.Size = new System.Drawing.Size(127, 24);
+            this.checkBoxMinNotAvailable.Size = new System.Drawing.Size(89, 17);
             this.checkBoxMinNotAvailable.TabIndex = 3;
             this.checkBoxMinNotAvailable.Text = "Not Available";
             this.checkBoxMinNotAvailable.UseVisualStyleBackColor = true;
@@ -171,30 +181,34 @@ namespace DIUTask.student
             // checkBoxMainAvailable
             // 
             this.checkBoxMainAvailable.AutoSize = true;
-            this.checkBoxMainAvailable.Location = new System.Drawing.Point(25, 62);
+            this.checkBoxMainAvailable.Location = new System.Drawing.Point(17, 40);
+            this.checkBoxMainAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxMainAvailable.Name = "checkBoxMainAvailable";
-            this.checkBoxMainAvailable.Size = new System.Drawing.Size(98, 24);
+            this.checkBoxMainAvailable.Size = new System.Drawing.Size(69, 17);
             this.checkBoxMainAvailable.TabIndex = 2;
             this.checkBoxMainAvailable.Text = "Available";
             this.checkBoxMainAvailable.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnMainDownload
             // 
-            this.button4.Location = new System.Drawing.Point(33, 119);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(224, 42);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Download";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnMainDownload.Location = new System.Drawing.Point(22, 77);
+            this.btnMainDownload.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMainDownload.Name = "btnMainDownload";
+            this.btnMainDownload.Size = new System.Drawing.Size(149, 27);
+            this.btnMainDownload.TabIndex = 1;
+            this.btnMainDownload.Text = "Download";
+            this.btnMainDownload.UseVisualStyleBackColor = true;
+            this.btnMainDownload.Click += new System.EventHandler(this.btnMainDownload_Click);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(32, 18);
+            this.label23.Location = new System.Drawing.Point(21, 12);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(225, 20);
+            this.label23.Size = new System.Drawing.Size(147, 13);
             this.label23.TabIndex = 0;
-            this.label23.Text = "Check Temp Cartificate Status";
+            this.label23.Text = "Check Main Cartificate Status";
             // 
             // panel5
             // 
@@ -204,17 +218,19 @@ namespace DIUTask.student
             this.panel5.Controls.Add(this.checkBoxTempAvailable);
             this.panel5.Controls.Add(this.btnTmpDownload);
             this.panel5.Controls.Add(this.label22);
-            this.panel5.Location = new System.Drawing.Point(190, 132);
+            this.panel5.Location = new System.Drawing.Point(127, 86);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(284, 178);
+            this.panel5.Size = new System.Drawing.Size(190, 116);
             this.panel5.TabIndex = 2;
             // 
             // checkBoxTempNotAvailable
             // 
             this.checkBoxTempNotAvailable.AutoSize = true;
-            this.checkBoxTempNotAvailable.Location = new System.Drawing.Point(142, 62);
+            this.checkBoxTempNotAvailable.Location = new System.Drawing.Point(95, 40);
+            this.checkBoxTempNotAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxTempNotAvailable.Name = "checkBoxTempNotAvailable";
-            this.checkBoxTempNotAvailable.Size = new System.Drawing.Size(127, 24);
+            this.checkBoxTempNotAvailable.Size = new System.Drawing.Size(89, 17);
             this.checkBoxTempNotAvailable.TabIndex = 3;
             this.checkBoxTempNotAvailable.Text = "Not Available";
             this.checkBoxTempNotAvailable.UseVisualStyleBackColor = true;
@@ -222,18 +238,20 @@ namespace DIUTask.student
             // checkBoxTempAvailable
             // 
             this.checkBoxTempAvailable.AutoSize = true;
-            this.checkBoxTempAvailable.Location = new System.Drawing.Point(25, 62);
+            this.checkBoxTempAvailable.Location = new System.Drawing.Point(17, 40);
+            this.checkBoxTempAvailable.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxTempAvailable.Name = "checkBoxTempAvailable";
-            this.checkBoxTempAvailable.Size = new System.Drawing.Size(98, 24);
+            this.checkBoxTempAvailable.Size = new System.Drawing.Size(69, 17);
             this.checkBoxTempAvailable.TabIndex = 2;
             this.checkBoxTempAvailable.Text = "Available";
             this.checkBoxTempAvailable.UseVisualStyleBackColor = true;
             // 
             // btnTmpDownload
             // 
-            this.btnTmpDownload.Location = new System.Drawing.Point(33, 119);
+            this.btnTmpDownload.Location = new System.Drawing.Point(22, 77);
+            this.btnTmpDownload.Margin = new System.Windows.Forms.Padding(2);
             this.btnTmpDownload.Name = "btnTmpDownload";
-            this.btnTmpDownload.Size = new System.Drawing.Size(224, 42);
+            this.btnTmpDownload.Size = new System.Drawing.Size(149, 27);
             this.btnTmpDownload.TabIndex = 1;
             this.btnTmpDownload.Text = "Download";
             this.btnTmpDownload.UseVisualStyleBackColor = true;
@@ -242,49 +260,83 @@ namespace DIUTask.student
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(32, 18);
+            this.label22.Location = new System.Drawing.Point(21, 12);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(225, 20);
+            this.label22.Size = new System.Drawing.Size(151, 13);
             this.label22.TabIndex = 0;
             this.label22.Text = "Check Temp Cartificate Status";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(464, 42);
+            this.label1.Location = new System.Drawing.Point(309, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 20);
+            this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Cartificate Status";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label30);
+            this.tabPage2.Controls.Add(this.label29);
+            this.tabPage2.Controls.Add(this.label28);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1060, 556);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(704, 357);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Temp Cartificate";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(602, 107);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(65, 13);
+            this.label30.TabIndex = 5;
+            this.label30.Text = " and Unique";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(548, 93);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(119, 13);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "** Means Must Be Entry";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(551, 72);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(115, 13);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "* Means Must Be Entry";
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(268, 438);
+            this.panel2.Location = new System.Drawing.Point(179, 285);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(514, 54);
+            this.panel2.Size = new System.Drawing.Size(343, 36);
             this.panel2.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(332, 9);
+            this.button1.Location = new System.Drawing.Point(221, 6);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 37);
+            this.button1.Size = new System.Drawing.Size(110, 24);
             this.button1.TabIndex = 0;
             this.button1.Text = "Apply";
             this.button1.UseVisualStyleBackColor = true;
@@ -311,183 +363,235 @@ namespace DIUTask.student
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(270, 68);
+            this.panel1.Location = new System.Drawing.Point(180, 44);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 352);
+            this.panel1.Size = new System.Drawing.Size(343, 229);
             this.panel1.TabIndex = 1;
             // 
             // txtStatusTmp
             // 
-            this.txtStatusTmp.Location = new System.Drawing.Point(170, 291);
+            this.txtStatusTmp.Location = new System.Drawing.Point(113, 189);
+            this.txtStatusTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtStatusTmp.Name = "txtStatusTmp";
-            this.txtStatusTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtStatusTmp.Size = new System.Drawing.Size(187, 20);
             this.txtStatusTmp.TabIndex = 17;
             // 
             // txtTranITTmp
             // 
-            this.txtTranITTmp.Location = new System.Drawing.Point(170, 258);
+            this.txtTranITTmp.Location = new System.Drawing.Point(113, 168);
+            this.txtTranITTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtTranITTmp.Name = "txtTranITTmp";
-            this.txtTranITTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtTranITTmp.Size = new System.Drawing.Size(187, 20);
             this.txtTranITTmp.TabIndex = 16;
             // 
             // txtApplyDateTmp
             // 
-            this.txtApplyDateTmp.Location = new System.Drawing.Point(170, 228);
+            this.txtApplyDateTmp.Location = new System.Drawing.Point(113, 148);
+            this.txtApplyDateTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtApplyDateTmp.Name = "txtApplyDateTmp";
-            this.txtApplyDateTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtApplyDateTmp.Size = new System.Drawing.Size(187, 20);
             this.txtApplyDateTmp.TabIndex = 15;
             // 
             // txtEmailTmp
             // 
-            this.txtEmailTmp.Location = new System.Drawing.Point(170, 195);
+            this.txtEmailTmp.Location = new System.Drawing.Point(113, 127);
+            this.txtEmailTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailTmp.Name = "txtEmailTmp";
-            this.txtEmailTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtEmailTmp.Size = new System.Drawing.Size(187, 20);
             this.txtEmailTmp.TabIndex = 14;
             // 
             // txtMobileTmp
             // 
-            this.txtMobileTmp.Location = new System.Drawing.Point(170, 163);
+            this.txtMobileTmp.Location = new System.Drawing.Point(113, 106);
+            this.txtMobileTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobileTmp.Name = "txtMobileTmp";
-            this.txtMobileTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtMobileTmp.Size = new System.Drawing.Size(187, 20);
             this.txtMobileTmp.TabIndex = 13;
             // 
             // txtAddressTmp
             // 
-            this.txtAddressTmp.Location = new System.Drawing.Point(170, 131);
+            this.txtAddressTmp.Location = new System.Drawing.Point(113, 85);
+            this.txtAddressTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddressTmp.Name = "txtAddressTmp";
-            this.txtAddressTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtAddressTmp.Size = new System.Drawing.Size(187, 20);
             this.txtAddressTmp.TabIndex = 12;
             // 
             // txtFatherNameTmp
             // 
-            this.txtFatherNameTmp.Location = new System.Drawing.Point(170, 98);
+            this.txtFatherNameTmp.Location = new System.Drawing.Point(113, 64);
+            this.txtFatherNameTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtFatherNameTmp.Name = "txtFatherNameTmp";
-            this.txtFatherNameTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtFatherNameTmp.Size = new System.Drawing.Size(187, 20);
             this.txtFatherNameTmp.TabIndex = 11;
             // 
             // txtNameTmp
             // 
-            this.txtNameTmp.Location = new System.Drawing.Point(170, 68);
+            this.txtNameTmp.Location = new System.Drawing.Point(113, 44);
+            this.txtNameTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameTmp.Name = "txtNameTmp";
-            this.txtNameTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtNameTmp.Size = new System.Drawing.Size(187, 20);
             this.txtNameTmp.TabIndex = 10;
             // 
             // txtRegNumberTmp
             // 
-            this.txtRegNumberTmp.Location = new System.Drawing.Point(170, 35);
+            this.txtRegNumberTmp.Location = new System.Drawing.Point(113, 23);
+            this.txtRegNumberTmp.Margin = new System.Windows.Forms.Padding(2);
             this.txtRegNumberTmp.Name = "txtRegNumberTmp";
-            this.txtRegNumberTmp.Size = new System.Drawing.Size(278, 26);
+            this.txtRegNumberTmp.Size = new System.Drawing.Size(187, 20);
             this.txtRegNumberTmp.TabIndex = 9;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(106, 291);
+            this.label11.Location = new System.Drawing.Point(71, 189);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 20);
+            this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 8;
-            this.label11.Text = "Status:";
+            this.label11.Text = "*Status:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(106, 258);
+            this.label10.Location = new System.Drawing.Point(64, 168);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 20);
+            this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 7;
-            this.label10.Text = "TranIT:";
+            this.label10.Text = "**TranIT:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(75, 228);
+            this.label9.Location = new System.Drawing.Point(48, 148);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 20);
+            this.label9.Size = new System.Drawing.Size(66, 13);
             this.label9.TabIndex = 6;
-            this.label9.Text = "Apply Date:";
+            this.label9.Text = "*Apply Date:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(111, 195);
+            this.label8.Location = new System.Drawing.Point(75, 127);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 20);
+            this.label8.Size = new System.Drawing.Size(39, 13);
             this.label8.TabIndex = 5;
-            this.label8.Text = "Email:";
+            this.label8.Text = "*Email:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 163);
+            this.label7.Location = new System.Drawing.Point(69, 106);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 20);
+            this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Mobile:";
+            this.label7.Text = "*Mobile:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(94, 131);
+            this.label6.Location = new System.Drawing.Point(63, 85);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 20);
+            this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 3;
-            this.label6.Text = "Address:";
+            this.label6.Text = "*Address:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(60, 98);
+            this.label5.Location = new System.Drawing.Point(40, 64);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 20);
+            this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Father Name:";
+            this.label5.Text = "*Father Name:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(111, 68);
+            this.label4.Location = new System.Drawing.Point(74, 44);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 20);
+            this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Name:";
+            this.label4.Text = "*Name:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 35);
+            this.label3.Location = new System.Drawing.Point(36, 23);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 20);
+            this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Reg Number:";
+            this.label3.Text = "**Reg Number:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(267, 32);
+            this.label2.Location = new System.Drawing.Point(178, 21);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(217, 20);
+            this.label2.Size = new System.Drawing.Size(145, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Apply For Tempory Cartificate";
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label31);
+            this.tabPage3.Controls.Add(this.label32);
+            this.tabPage3.Controls.Add(this.label33);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.panel3);
             this.tabPage3.Controls.Add(this.panel4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1060, 556);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Size = new System.Drawing.Size(704, 357);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Main Cartificate";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(611, 97);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(65, 13);
+            this.label31.TabIndex = 8;
+            this.label31.Text = " and Unique";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(557, 83);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(119, 13);
+            this.label32.TabIndex = 7;
+            this.label32.Text = "** Means Must Be Entry";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(560, 62);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(115, 13);
+            this.label33.TabIndex = 6;
+            this.label33.Text = "* Means Must Be Entry";
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(271, 5);
+            this.label21.Location = new System.Drawing.Point(181, 3);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(190, 20);
+            this.label21.Size = new System.Drawing.Size(127, 13);
             this.label21.TabIndex = 5;
             this.label21.Text = "Apply For Main Cartificate";
             this.label21.Click += new System.EventHandler(this.label21_Click);
@@ -496,16 +600,18 @@ namespace DIUTask.student
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Location = new System.Drawing.Point(272, 488);
+            this.panel3.Location = new System.Drawing.Point(181, 317);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(514, 54);
+            this.panel3.Size = new System.Drawing.Size(343, 36);
             this.panel3.TabIndex = 4;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(335, 6);
+            this.button2.Location = new System.Drawing.Point(223, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 37);
+            this.button2.Size = new System.Drawing.Size(110, 24);
             this.button2.TabIndex = 0;
             this.button2.Text = "Apply";
             this.button2.UseVisualStyleBackColor = true;
@@ -538,213 +644,235 @@ namespace DIUTask.student
             this.panel4.Controls.Add(this.label18);
             this.panel4.Controls.Add(this.label19);
             this.panel4.Controls.Add(this.label20);
-            this.panel4.Location = new System.Drawing.Point(273, 28);
+            this.panel4.Location = new System.Drawing.Point(182, 18);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(513, 452);
+            this.panel4.Size = new System.Drawing.Size(343, 294);
             this.panel4.TabIndex = 3;
             // 
             // txtCGPAMain
             // 
-            this.txtCGPAMain.Location = new System.Drawing.Point(164, 386);
+            this.txtCGPAMain.Location = new System.Drawing.Point(109, 251);
+            this.txtCGPAMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtCGPAMain.Name = "txtCGPAMain";
-            this.txtCGPAMain.Size = new System.Drawing.Size(278, 26);
+            this.txtCGPAMain.Size = new System.Drawing.Size(187, 20);
             this.txtCGPAMain.TabIndex = 29;
             // 
             // txtProgramMain
             // 
-            this.txtProgramMain.Location = new System.Drawing.Point(164, 353);
+            this.txtProgramMain.Location = new System.Drawing.Point(109, 229);
+            this.txtProgramMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtProgramMain.Name = "txtProgramMain";
-            this.txtProgramMain.Size = new System.Drawing.Size(278, 26);
+            this.txtProgramMain.Size = new System.Drawing.Size(187, 20);
             this.txtProgramMain.TabIndex = 28;
             // 
             // txtSessionMain
             // 
-            this.txtSessionMain.Location = new System.Drawing.Point(164, 323);
+            this.txtSessionMain.Location = new System.Drawing.Point(109, 210);
+            this.txtSessionMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtSessionMain.Name = "txtSessionMain";
-            this.txtSessionMain.Size = new System.Drawing.Size(278, 26);
+            this.txtSessionMain.Size = new System.Drawing.Size(187, 20);
             this.txtSessionMain.TabIndex = 27;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(103, 386);
+            this.label24.Location = new System.Drawing.Point(66, 251);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(58, 20);
+            this.label24.Size = new System.Drawing.Size(43, 13);
             this.label24.TabIndex = 26;
-            this.label24.Text = "CGPA:";
+            this.label24.Text = "*CGPA:";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(88, 353);
+            this.label25.Location = new System.Drawing.Point(56, 229);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(73, 20);
+            this.label25.Size = new System.Drawing.Size(53, 13);
             this.label25.TabIndex = 25;
-            this.label25.Text = "Program:";
+            this.label25.Text = "*Program:";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(89, 323);
+            this.label26.Location = new System.Drawing.Point(57, 210);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(70, 20);
+            this.label26.Size = new System.Drawing.Size(51, 13);
             this.label26.TabIndex = 24;
-            this.label26.Text = "Session:";
+            this.label26.Text = "*Session:";
             // 
             // txtStatusMain
             // 
-            this.txtStatusMain.Location = new System.Drawing.Point(164, 291);
+            this.txtStatusMain.Location = new System.Drawing.Point(109, 189);
+            this.txtStatusMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtStatusMain.Name = "txtStatusMain";
-            this.txtStatusMain.Size = new System.Drawing.Size(278, 26);
+            this.txtStatusMain.Size = new System.Drawing.Size(187, 20);
             this.txtStatusMain.TabIndex = 17;
             // 
             // txtTranITMain
             // 
-            this.txtTranITMain.Location = new System.Drawing.Point(164, 258);
+            this.txtTranITMain.Location = new System.Drawing.Point(109, 168);
+            this.txtTranITMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtTranITMain.Name = "txtTranITMain";
-            this.txtTranITMain.Size = new System.Drawing.Size(278, 26);
+            this.txtTranITMain.Size = new System.Drawing.Size(187, 20);
             this.txtTranITMain.TabIndex = 16;
             // 
             // txtApplyDateMain
             // 
-            this.txtApplyDateMain.Location = new System.Drawing.Point(164, 228);
+            this.txtApplyDateMain.Location = new System.Drawing.Point(109, 148);
+            this.txtApplyDateMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtApplyDateMain.Name = "txtApplyDateMain";
-            this.txtApplyDateMain.Size = new System.Drawing.Size(278, 26);
+            this.txtApplyDateMain.Size = new System.Drawing.Size(187, 20);
             this.txtApplyDateMain.TabIndex = 15;
             // 
             // txtEmailMain
             // 
-            this.txtEmailMain.Location = new System.Drawing.Point(164, 195);
+            this.txtEmailMain.Location = new System.Drawing.Point(109, 127);
+            this.txtEmailMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailMain.Name = "txtEmailMain";
-            this.txtEmailMain.Size = new System.Drawing.Size(278, 26);
+            this.txtEmailMain.Size = new System.Drawing.Size(187, 20);
             this.txtEmailMain.TabIndex = 14;
             // 
             // txtMobileMain
             // 
-            this.txtMobileMain.Location = new System.Drawing.Point(164, 163);
+            this.txtMobileMain.Location = new System.Drawing.Point(109, 106);
+            this.txtMobileMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtMobileMain.Name = "txtMobileMain";
-            this.txtMobileMain.Size = new System.Drawing.Size(278, 26);
+            this.txtMobileMain.Size = new System.Drawing.Size(187, 20);
             this.txtMobileMain.TabIndex = 13;
             // 
             // txtAddressMain
             // 
-            this.txtAddressMain.Location = new System.Drawing.Point(164, 131);
+            this.txtAddressMain.Location = new System.Drawing.Point(109, 85);
+            this.txtAddressMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddressMain.Name = "txtAddressMain";
-            this.txtAddressMain.Size = new System.Drawing.Size(278, 26);
+            this.txtAddressMain.Size = new System.Drawing.Size(187, 20);
             this.txtAddressMain.TabIndex = 12;
             // 
             // txtFatherNameMain
             // 
-            this.txtFatherNameMain.Location = new System.Drawing.Point(164, 98);
+            this.txtFatherNameMain.Location = new System.Drawing.Point(109, 64);
+            this.txtFatherNameMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtFatherNameMain.Name = "txtFatherNameMain";
-            this.txtFatherNameMain.Size = new System.Drawing.Size(278, 26);
+            this.txtFatherNameMain.Size = new System.Drawing.Size(187, 20);
             this.txtFatherNameMain.TabIndex = 11;
             // 
             // txtNameMain
             // 
-            this.txtNameMain.Location = new System.Drawing.Point(164, 68);
+            this.txtNameMain.Location = new System.Drawing.Point(109, 44);
+            this.txtNameMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameMain.Name = "txtNameMain";
-            this.txtNameMain.Size = new System.Drawing.Size(278, 26);
+            this.txtNameMain.Size = new System.Drawing.Size(187, 20);
             this.txtNameMain.TabIndex = 10;
             // 
             // txtRegNumberMain
             // 
-            this.txtRegNumberMain.Location = new System.Drawing.Point(164, 35);
+            this.txtRegNumberMain.Location = new System.Drawing.Point(109, 23);
+            this.txtRegNumberMain.Margin = new System.Windows.Forms.Padding(2);
             this.txtRegNumberMain.Name = "txtRegNumberMain";
-            this.txtRegNumberMain.Size = new System.Drawing.Size(278, 26);
+            this.txtRegNumberMain.Size = new System.Drawing.Size(187, 20);
             this.txtRegNumberMain.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(100, 291);
+            this.label12.Location = new System.Drawing.Point(63, 189);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 20);
+            this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 8;
-            this.label12.Text = "Status:";
+            this.label12.Text = "*Status:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(100, 258);
+            this.label13.Location = new System.Drawing.Point(57, 168);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 20);
+            this.label13.Size = new System.Drawing.Size(50, 13);
             this.label13.TabIndex = 7;
-            this.label13.Text = "TranIT:";
+            this.label13.Text = "**TranIT:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(69, 228);
+            this.label14.Location = new System.Drawing.Point(42, 148);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 20);
+            this.label14.Size = new System.Drawing.Size(66, 13);
             this.label14.TabIndex = 6;
-            this.label14.Text = "Apply Date:";
+            this.label14.Text = "*Apply Date:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(105, 195);
+            this.label15.Location = new System.Drawing.Point(69, 127);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 20);
+            this.label15.Size = new System.Drawing.Size(39, 13);
             this.label15.TabIndex = 5;
-            this.label15.Text = "Email:";
+            this.label15.Text = "*Email:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(100, 163);
+            this.label16.Location = new System.Drawing.Point(63, 106);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 20);
+            this.label16.Size = new System.Drawing.Size(45, 13);
             this.label16.TabIndex = 4;
-            this.label16.Text = "Mobile:";
+            this.label16.Text = "*Mobile:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(88, 131);
+            this.label17.Location = new System.Drawing.Point(56, 85);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 20);
+            this.label17.Size = new System.Drawing.Size(52, 13);
             this.label17.TabIndex = 3;
-            this.label17.Text = "Address:";
+            this.label17.Text = "*Address:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(54, 98);
+            this.label18.Location = new System.Drawing.Point(33, 64);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(106, 20);
+            this.label18.Size = new System.Drawing.Size(75, 13);
             this.label18.TabIndex = 2;
-            this.label18.Text = "Father Name:";
+            this.label18.Text = "*Father Name:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(105, 68);
+            this.label19.Location = new System.Drawing.Point(65, 44);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(55, 20);
+            this.label19.Size = new System.Drawing.Size(42, 13);
             this.label19.TabIndex = 1;
-            this.label19.Text = "Name:";
+            this.label19.Text = "*Name:";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(57, 35);
+            this.label20.Location = new System.Drawing.Point(30, 23);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(103, 20);
+            this.label20.Size = new System.Drawing.Size(78, 13);
             this.label20.TabIndex = 0;
-            this.label20.Text = "Reg Number:";
-            // 
-            // openFileDialogBox
-            // 
-            this.openFileDialogBox.FileName = "openFileDialogBox";
+            this.label20.Text = "**Reg Number:";
             // 
             // StudentView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 591);
+            this.ClientSize = new System.Drawing.Size(712, 384);
             this.Controls.Add(this.tabCartificateStatus);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentView";
             this.Text = "Student Deshboard";
             this.Load += new System.EventHandler(this.StudentView_Load);
@@ -822,7 +950,7 @@ namespace DIUTask.student
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.CheckBox checkBoxMinNotAvailable;
         private System.Windows.Forms.CheckBox checkBoxMainAvailable;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnMainDownload;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.CheckBox checkBoxTempNotAvailable;
@@ -836,7 +964,12 @@ namespace DIUTask.student
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label lblRegNumber;
-        private System.Windows.Forms.OpenFileDialog openFileDialogBox;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogBox;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
     }
 }

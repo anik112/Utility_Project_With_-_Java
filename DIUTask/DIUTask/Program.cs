@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DIUTask.admin;
+using DIUTask.publicUser;
 
 namespace DIUTask
 {
@@ -17,8 +18,9 @@ namespace DIUTask
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();
-            Application.Run(new StudentView());
+            //Application.Run(new StudentView());
             //Application.Run(new AdminView());
+            Application.Run(new Login());
             //DBConnect.getConnect(); 
         }
     }

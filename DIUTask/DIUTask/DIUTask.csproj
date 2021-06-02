@@ -77,6 +77,7 @@
     <Compile Include="core\DBConnect.cs" />
     <Compile Include="core\MainCartificateModel.cs" />
     <Compile Include="core\TempCartificateModel.cs" />
+    <Compile Include="core\UserInfoModel.cs" />
     <Compile Include="core\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +85,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="publicUser\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="publicUser\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="publicUser\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="publicUser\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="student\StudentView.cs">
       <SubType>Form</SubType>
@@ -103,6 +116,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="publicUser\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="publicUser\Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="student\StudentView.resx">
       <DependentUpon>StudentView.cs</DependentUpon>

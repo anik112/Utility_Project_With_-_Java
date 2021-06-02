@@ -13,7 +13,6 @@ F:\Utility_Project_With_-_Java\DIUTask\DIUTask\bin\Debug\System.Memory.xml
 F:\Utility_Project_With_-_Java\DIUTask\DIUTask\bin\Debug\System.Numerics.Vectors.xml
 F:\Utility_Project_With_-_Java\DIUTask\DIUTask\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 F:\Utility_Project_With_-_Java\DIUTask\DIUTask\bin\Debug\System.Threading.Tasks.Extensions.xml
-F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.csprojAssemblyReference.cache
 F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.Properties.Resources.resources
 F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.student.StudentView.resources
 F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.csproj.GenerateResource.cache
@@ -45,3 +44,7 @@ D:\AnikProgram\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.exe
 D:\AnikProgram\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.pdb
 D:\AnikProgram\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.csproj.AssemblyReference.cache
 D:\AnikProgram\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.admin.AdminView.resources
+F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.admin.AdminView.resources
+F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.csprojAssemblyReference.cache
+F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.publicUser.RegrastrationView.resources
+F:\Utility_Project_With_-_Java\DIUTask\DIUTask\obj\Debug\DIUTask.publicUser.Login.resources

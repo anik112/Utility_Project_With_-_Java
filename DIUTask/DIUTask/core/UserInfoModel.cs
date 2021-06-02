@@ -1,7 +1,6 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +8,8 @@ using System.Windows.Forms;
 
 namespace DIUTask.core
 {
-    class MainCartificateModel
+    class UserInfoModel
     {
-
         public int id;
         public string reg_number;
         public string name;
@@ -19,39 +17,73 @@ namespace DIUTask.core
         public string address;
         public string mobile;
         public string email;
-        public DateTime apply_date;
-        public string tranit;
-        public string status;
-        public string session;
-        public string program;
-        public float CGPA;
+        public DateTime create_date;
+        public string userName;
+        public string password;
+        public string userType;
 
-        public void insertMainCartificateData()
+        public void insertUserInfoData()
         {
             try
             {
                 MySqlCommand cmd = DBConnect.getConnect().CreateCommand();
-                cmd.CommandText = "INSERT INTO `tb_cartificate_main`(`reg_number`, `name`, `father_name`, `address`, `mobile`, `email`, `apply_date`, `tranit`, `status`, `session`, `program`, `CGPA`, `file_location`) " +
-                                  "VALUES (@reg_number,@name,@father_name,@address,@mobile,@email,@apply_date,@tranit,@status,@session,@program,@CGPA,@fileLoc)";
+                cmd.CommandText = "INSERT INTO `tb_user_info`(`reg_number`, `name`, `father_name`, `address`, `mobile`, `email`, `create_date`, `user_name`, `password`, `user_type`) " +
+                                  "VALUES (@reg_number,@name,@father_name,@address,@mobile,@email,@create_date,@user_name,@password,@user_type)";
                 cmd.Parameters.AddWithValue("@reg_number", reg_number);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@father_name", father_name);
                 cmd.Parameters.AddWithValue("@address", address);
                 cmd.Parameters.AddWithValue("@mobile", mobile);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@apply_date", apply_date);
-                cmd.Parameters.AddWithValue("@tranit", tranit);
-                cmd.Parameters.AddWithValue("@status", status);
-                cmd.Parameters.AddWithValue("@session", session);
-                cmd.Parameters.AddWithValue("@program",program);
-                cmd.Parameters.AddWithValue("@CGPA",CGPA);
-                cmd.Parameters.AddWithValue("@fileLoc", "-");
+                cmd.Parameters.AddWithValue("@create_date", create_date);
+                cmd.Parameters.AddWithValue("@user_name", userName);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@user_type", userType);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Data Save Sucess!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
+        public void updateUserInfoData(string reg_number)
+        {
+            try
+            {
+                MySqlCommand cmd = DBConnect.getConnect().CreateCommand();
+                cmd.CommandText = "UPDATE `tb_user_info` SET " +
+                    "`name`=@name," +
+                    "`father_name`=@father_name," +
+                    "`address`=@address," +
+                    "`mobile`=@mobile," +
+                    "`email`=@email," +
+                    "`create_date`=@create_date," +
+                    "`user_name`=@user_name," +
+                    "`password`=@password," +
+                    "`user_type`=@user_type" +
+                    "WHERE `reg_number`=@regNum";
+                
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@father_name", father_name);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@mobile", mobile);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@create_date", create_date);
+                cmd.Parameters.AddWithValue("@user_name", userName);
+                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@user_type", userType);
+                cmd.Parameters.AddWithValue("@reg_number", reg_number);
 
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Data Update Sucess!");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -139,6 +171,5 @@ namespace DIUTask.core
 
             return "";
         }
-
     }
 }
