@@ -46,6 +46,6 @@ email varchar(100) UNIQUE NOT NULL,
 create_date date NOT NULL,
 user_name varchar(150) NOT NULL,
 password varchar(250) DEFAULT "123456",
-user_type varchar(150) not null,
+user_type varchar(150) not null DEFAULT "student",
 PRIMARY key (id)
 )

@@ -31,6 +31,7 @@ namespace DIUTask.publicUser
         {
             this.label21 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxUserType = new System.Windows.Forms.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtCreateDate = new System.Windows.Forms.TextBox();
@@ -61,16 +62,16 @@ namespace DIUTask.publicUser
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(175, 11);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Location = new System.Drawing.Point(262, 17);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(63, 13);
+            this.label21.Size = new System.Drawing.Size(95, 20);
             this.label21.TabIndex = 8;
             this.label21.Text = "Registration";
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.comboBoxUserType);
             this.panel4.Controls.Add(this.txtPassword);
             this.panel4.Controls.Add(this.txtUserName);
             this.panel4.Controls.Add(this.txtCreateDate);
@@ -89,171 +90,163 @@ namespace DIUTask.publicUser
             this.panel4.Controls.Add(this.label18);
             this.panel4.Controls.Add(this.label19);
             this.panel4.Controls.Add(this.label20);
-            this.panel4.Location = new System.Drawing.Point(176, 26);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(264, 40);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(343, 240);
+            this.panel4.Size = new System.Drawing.Size(514, 386);
             this.panel4.TabIndex = 6;
+            // 
+            // comboBoxUserType
+            // 
+            this.comboBoxUserType.FormattingEnabled = true;
+            this.comboBoxUserType.Items.AddRange(new object[] {
+            "student",
+            "teacher"});
+            this.comboBoxUserType.Location = new System.Drawing.Point(164, 339);
+            this.comboBoxUserType.Name = "comboBoxUserType";
+            this.comboBoxUserType.Size = new System.Drawing.Size(277, 28);
+            this.comboBoxUserType.TabIndex = 18;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(109, 177);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPassword.Location = new System.Drawing.Point(164, 272);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(187, 20);
+            this.txtPassword.Size = new System.Drawing.Size(278, 26);
             this.txtPassword.TabIndex = 17;
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(109, 154);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserName.Location = new System.Drawing.Point(164, 237);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(187, 20);
+            this.txtUserName.Size = new System.Drawing.Size(278, 26);
             this.txtUserName.TabIndex = 16;
             // 
             // txtCreateDate
             // 
-            this.txtCreateDate.Location = new System.Drawing.Point(109, 199);
-            this.txtCreateDate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCreateDate.Location = new System.Drawing.Point(164, 306);
             this.txtCreateDate.Name = "txtCreateDate";
-            this.txtCreateDate.Size = new System.Drawing.Size(187, 20);
+            this.txtCreateDate.Size = new System.Drawing.Size(278, 26);
             this.txtCreateDate.TabIndex = 15;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(109, 131);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.txtEmail.Location = new System.Drawing.Point(164, 202);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 20);
+            this.txtEmail.Size = new System.Drawing.Size(278, 26);
             this.txtEmail.TabIndex = 14;
             // 
             // txtMobile
             // 
-            this.txtMobile.Location = new System.Drawing.Point(109, 109);
-            this.txtMobile.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMobile.Location = new System.Drawing.Point(164, 168);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(187, 20);
+            this.txtMobile.Size = new System.Drawing.Size(278, 26);
             this.txtMobile.TabIndex = 13;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(109, 88);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.txtAddress.Location = new System.Drawing.Point(164, 135);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(187, 20);
+            this.txtAddress.Size = new System.Drawing.Size(278, 26);
             this.txtAddress.TabIndex = 12;
             // 
             // txtFatherName
             // 
-            this.txtFatherName.Location = new System.Drawing.Point(109, 66);
-            this.txtFatherName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFatherName.Location = new System.Drawing.Point(164, 102);
             this.txtFatherName.Name = "txtFatherName";
-            this.txtFatherName.Size = new System.Drawing.Size(187, 20);
+            this.txtFatherName.Size = new System.Drawing.Size(278, 26);
             this.txtFatherName.TabIndex = 11;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(109, 44);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Location = new System.Drawing.Point(164, 68);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(187, 20);
+            this.txtName.Size = new System.Drawing.Size(278, 26);
             this.txtName.TabIndex = 10;
             // 
             // txtRegNumber
             // 
-            this.txtRegNumber.Location = new System.Drawing.Point(109, 23);
-            this.txtRegNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.txtRegNumber.Location = new System.Drawing.Point(164, 35);
             this.txtRegNumber.Name = "txtRegNumber";
-            this.txtRegNumber.Size = new System.Drawing.Size(187, 20);
+            this.txtRegNumber.Size = new System.Drawing.Size(278, 26);
             this.txtRegNumber.TabIndex = 9;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(52, 177);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(78, 272);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.Size = new System.Drawing.Size(82, 20);
             this.label12.TabIndex = 8;
             this.label12.Text = "Password:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(41, 154);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(62, 237);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.Size = new System.Drawing.Size(99, 20);
             this.label13.TabIndex = 7;
             this.label13.Text = "*User Name:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(48, 199);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(72, 306);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 13);
+            this.label14.Size = new System.Drawing.Size(91, 20);
             this.label14.TabIndex = 6;
             this.label14.Text = "Crate Date:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(65, 131);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(98, 202);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 13);
+            this.label15.Size = new System.Drawing.Size(64, 20);
             this.label15.TabIndex = 5;
             this.label15.Text = "**Email:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(63, 109);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Location = new System.Drawing.Point(94, 168);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 13);
+            this.label16.Size = new System.Drawing.Size(65, 20);
             this.label16.TabIndex = 4;
             this.label16.Text = "*Mobile:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(56, 88);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Location = new System.Drawing.Point(84, 135);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(52, 13);
+            this.label17.Size = new System.Drawing.Size(78, 20);
             this.label17.TabIndex = 3;
             this.label17.Text = "*Address:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(33, 66);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Location = new System.Drawing.Point(50, 102);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 13);
+            this.label18.Size = new System.Drawing.Size(112, 20);
             this.label18.TabIndex = 2;
             this.label18.Text = "*Father Name:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(66, 44);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Location = new System.Drawing.Point(99, 68);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(42, 13);
+            this.label19.Size = new System.Drawing.Size(61, 20);
             this.label19.TabIndex = 1;
             this.label19.Text = "*Name:";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(30, 23);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Location = new System.Drawing.Point(45, 35);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(78, 13);
+            this.label20.Size = new System.Drawing.Size(115, 20);
             this.label20.TabIndex = 0;
             this.label20.Text = "**Reg Number:";
             // 
@@ -261,18 +254,16 @@ namespace DIUTask.publicUser
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnRegistration);
-            this.panel3.Location = new System.Drawing.Point(176, 281);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(264, 449);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(343, 41);
+            this.panel3.Size = new System.Drawing.Size(514, 62);
             this.panel3.TabIndex = 7;
             // 
             // btnRegistration
             // 
-            this.btnRegistration.Location = new System.Drawing.Point(222, 7);
-            this.btnRegistration.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistration.Location = new System.Drawing.Point(333, 11);
             this.btnRegistration.Name = "btnRegistration";
-            this.btnRegistration.Size = new System.Drawing.Size(110, 24);
+            this.btnRegistration.Size = new System.Drawing.Size(165, 37);
             this.btnRegistration.TabIndex = 0;
             this.btnRegistration.Text = "Registration";
             this.btnRegistration.UseVisualStyleBackColor = true;
@@ -281,43 +272,48 @@ namespace DIUTask.publicUser
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(625, 71);
+            this.label30.Location = new System.Drawing.Point(938, 109);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(65, 13);
+            this.label30.Size = new System.Drawing.Size(95, 20);
             this.label30.TabIndex = 11;
             this.label30.Text = " and Unique";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(571, 57);
+            this.label29.Location = new System.Drawing.Point(856, 88);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(119, 13);
+            this.label29.Size = new System.Drawing.Size(177, 20);
             this.label29.TabIndex = 10;
             this.label29.Text = "** Means Must Be Entry";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(574, 36);
+            this.label28.Location = new System.Drawing.Point(861, 55);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(115, 13);
+            this.label28.Size = new System.Drawing.Size(171, 20);
             this.label28.TabIndex = 9;
             this.label28.Text = "* Means Must Be Entry";
             // 
             // RegrastrationView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 384);
+            this.ClientSize = new System.Drawing.Size(1068, 591);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RegrastrationView";
             this.Text = "Regrastration";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegrastrationView_FormClosed);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -353,5 +349,6 @@ namespace DIUTask.publicUser
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboBoxUserType;
     }
 }

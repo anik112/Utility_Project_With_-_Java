@@ -139,6 +139,23 @@ namespace DIUTask.core
             return "";
         }
 
+        public MySqlDataReader getSelectedData(string regNumber)
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                MySqlCommand cmd = DBConnect.getConnect().CreateCommand();
+                cmd.CommandText = "SELECT  `name`, `father_name`, `address`, `mobile`, `email` FROM `tb_user_info` WHERE reg_number=@regNo";
+                cmd.Parameters.AddWithValue("@regNo", regNumber);
+                reader = cmd.ExecuteReader();
+                return reader;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return reader;
+        }
 
     }
 }

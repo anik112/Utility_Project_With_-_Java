@@ -171,5 +171,23 @@ namespace DIUTask.core
 
             return "";
         }
+
+
+        public void addSuperAdmin()
+        {
+            reg_number = "112255";
+            name="super admin";
+            father_name="admin";
+            address="test";
+            mobile="11111111111";
+            email="admin@gmail.com";
+            create_date= System.DateTime.Now; 
+            userName="admin";
+            password="admin";
+            userType="admin";
+
+            insertUserInfoData();
+        }
+
     }
 }

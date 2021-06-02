@@ -13,9 +13,18 @@ namespace DIUTask.publicUser
 {
     public partial class RegrastrationView : Form
     {
-        public RegrastrationView()
+        private string RegNumber;
+        private string UserType;
+
+        public RegrastrationView(string regNumber, string userType)
         {
             InitializeComponent();
+            if (userType == "admin")
+            {
+                comboBoxUserType.Items.Add("admin");
+            }
+            this.RegNumber = regNumber;
+            this.UserType = userType;
             txtCreateDate.Text = System.DateTime.Now.ToString("dd/mm/yyyy");
         }
 
@@ -53,12 +62,31 @@ namespace DIUTask.publicUser
                 model.mobile = txtMobile.Text;
                 model.email = txtEmail.Text;
                 model.userName = txtUserName.Text;
-                model.password = txtPassword.Text;
+                if (txtPassword.Text != String.Empty)
+                {
+                    model.password = txtPassword.Text;
+                }
+                else
+                {
+                    model.password = "123456";
+                }
+                model.userType = comboBoxUserType.SelectedItem.ToString();
                 model.create_date = System.DateTime.Now;
 
                 model.insertUserInfoData();
             }
 
+        }
+
+        private void RegrastrationView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (UserType == "admin")
+            {
+                this.Hide();
+            }
+            else{
+                Application.Exit();
+            }
         }
     }
 }

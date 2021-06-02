@@ -9,19 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DIUTask.core;
+using MySqlConnector;
 
 namespace DIUTask.student
 {
     public partial class StudentView : Form
     {
-        public StudentView()
+        private string RegNumber;
+
+        public StudentView(string regNumber)
         {
             InitializeComponent();
+            this.RegNumber = regNumber;
+
             txtApplyDateMain.Text = System.DateTime.Now.ToString("dd/mm/yyyy"); 
             txtApplyDateTmp.Text = System.DateTime.Now.ToString("dd/mm/yyyy");
-            lblRegNumber.Text = "123";
+            lblRegNumber.Text = RegNumber;
+
             checkTempCartificateAvailable();
             checkMainCartificateAvailable();
+            setDefultData();
         }
 
         private bool checkAllDataEantryOrNot(int fromIndex)
@@ -68,11 +75,6 @@ namespace DIUTask.student
             }
 
             return false;
-        }
-
-        private void tabCartificateStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void label21_Click(object sender, EventArgs e)
@@ -147,11 +149,6 @@ namespace DIUTask.student
             }
         }
 
-        private void StudentView_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTmpDownload_Click(object sender, EventArgs e)
         {
             string uploadedPath = new TempCartificateModel().getFileLocation(lblRegNumber.Text);
@@ -200,6 +197,34 @@ namespace DIUTask.student
                 MessageBox.Show("File not exists !");
             }
             
+        }
+
+        private void setDefultData()
+        {
+            MySqlDataReader readerMain = new MainCartificateModel().getSelectedData(RegNumber);
+            //`name`, `father_name`, `address`, `mobile`, `email`
+            while (readerMain.Read())
+            {
+                txtRegNumberMain.Text = RegNumber;
+                txtNameMain.Text = readerMain.GetString(0);
+                txtFatherNameMain.Text = readerMain.GetString(1);
+                txtAddressMain.Text = readerMain.GetString(2);
+                txtMobileMain.Text = readerMain.GetString(3);
+                txtEmailMain.Text = readerMain.GetString(4);
+
+                txtRegNumberTmp.Text = RegNumber;
+                txtNameTmp.Text = readerMain.GetString(0);
+                txtFatherNameTmp.Text = readerMain.GetString(1);
+                txtAddressTmp.Text = readerMain.GetString(2);
+                txtMobileTmp.Text = readerMain.GetString(3);
+                txtEmailTmp.Text = readerMain.GetString(4);
+                break;
+            }
+        }
+
+        private void StudentView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

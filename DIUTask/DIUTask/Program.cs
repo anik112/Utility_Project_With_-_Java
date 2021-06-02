@@ -21,6 +21,7 @@ namespace DIUTask
             //Application.Run(new StudentView());
             //Application.Run(new AdminView());
             Application.Run(new Login());
+            //Application.Run(new RegrastrationView());
             //DBConnect.getConnect(); 
         }
     }

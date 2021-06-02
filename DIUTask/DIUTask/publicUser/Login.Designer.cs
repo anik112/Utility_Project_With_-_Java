@@ -37,25 +37,30 @@ namespace DIUTask.publicUser
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(37, 76);
+            this.txtUserName.Location = new System.Drawing.Point(56, 117);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUserName.Multiline = true;
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(193, 26);
+            this.txtUserName.Size = new System.Drawing.Size(288, 38);
             this.txtUserName.TabIndex = 0;
+            this.txtUserName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtUserName_MouseClick);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(37, 108);
+            this.txtPassword.Location = new System.Drawing.Point(56, 166);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(193, 26);
+            this.txtPassword.Size = new System.Drawing.Size(288, 38);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPassword_MouseClick);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(37, 169);
+            this.btnLogin.Location = new System.Drawing.Point(56, 260);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(194, 32);
+            this.btnLogin.Size = new System.Drawing.Size(291, 49);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -64,23 +69,26 @@ namespace DIUTask.publicUser
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(91, 30);
+            this.label1.Location = new System.Drawing.Point(136, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Login In This System";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 229);
+            this.ClientSize = new System.Drawing.Size(402, 352);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Login";
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
