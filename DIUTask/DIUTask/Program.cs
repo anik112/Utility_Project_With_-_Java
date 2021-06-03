@@ -18,11 +18,7 @@ namespace DIUTask
         static void Main(string[] args)
         {
             Application.EnableVisualStyles();
-            //Application.Run(new StudentView());
-            //Application.Run(new AdminView());
             Application.Run(new Login());
-            //Application.Run(new RegrastrationView());
-            //DBConnect.getConnect(); 
         }
     }
 }

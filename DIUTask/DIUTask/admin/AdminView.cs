@@ -127,5 +127,19 @@ namespace DIUTask.admin
             table.Load(new AdminService().viewAllApplyForMainCartificate());
             new ReportView(table, "Main Certificate Applicant List").Show();
         }
+
+        private void btnUploadedFileList_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Load(new AdminService().viewTempUploadedFileList());
+            new ReportView(table, "Temporary Certificate File Uploaded List").Show();
+        }
+
+        private void btnUploadedFileListMain_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Load(new AdminService().viewMainUploadedFileList());
+            new ReportView(table, "Main Certificate File Uploaded List").Show();
+        }
     }
 }

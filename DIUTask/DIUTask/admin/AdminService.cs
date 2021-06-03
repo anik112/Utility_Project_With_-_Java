@@ -65,5 +65,40 @@ namespace DIUTask.admin
             }
             return reader;
         }
+
+
+        public MySqlDataReader viewTempUploadedFileList()
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                MySqlCommand cmd = DBConnect.getConnect().CreateCommand();
+                cmd.CommandText = "SELECT `reg_number`, `name`, `mobile`, `email`, `file_location` FROM `tb_cartificate_tmp` WHERE file_location!='-'";
+                reader = cmd.ExecuteReader();
+                return reader;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return reader;
+        }
+
+        public MySqlDataReader viewMainUploadedFileList()
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                MySqlCommand cmd = DBConnect.getConnect().CreateCommand();
+                cmd.CommandText = "SELECT `reg_number`, `name`, `mobile`, `email`, `file_location` FROM `tb_cartificate_main` WHERE file_location!='-'";
+                reader = cmd.ExecuteReader();
+                return reader;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return reader;
+        }
     }
 }

@@ -81,11 +81,6 @@ namespace DIUTask.publicUser
         }
 
 
-        private void Login_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
         private void txtPassword_MouseClick(object sender, MouseEventArgs e)
         {
             txtPassword.Text = String.Empty;

@@ -30,46 +30,53 @@ namespace DIUTask.admin
         private void InitializeComponent()
         {
             this.dataGridReportView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnConvertPDF = new System.Windows.Forms.Button();
+            this.txtShowReportName = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridReportView)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridReportView
             // 
             this.dataGridReportView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridReportView.Location = new System.Drawing.Point(2, 41);
+            this.dataGridReportView.Location = new System.Drawing.Point(1, 27);
+            this.dataGridReportView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridReportView.Name = "dataGridReportView";
             this.dataGridReportView.RowHeadersWidth = 62;
             this.dataGridReportView.RowTemplate.Height = 28;
-            this.dataGridReportView.Size = new System.Drawing.Size(1076, 676);
+            this.dataGridReportView.Size = new System.Drawing.Size(717, 439);
             this.dataGridReportView.TabIndex = 0;
             // 
-            // button1
+            // btnConvertPDF
             // 
-            this.button1.Location = new System.Drawing.Point(5, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(246, 31);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Download As PDF";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnConvertPDF.Location = new System.Drawing.Point(3, 3);
+            this.btnConvertPDF.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConvertPDF.Name = "btnConvertPDF";
+            this.btnConvertPDF.Size = new System.Drawing.Size(164, 20);
+            this.btnConvertPDF.TabIndex = 1;
+            this.btnConvertPDF.Text = "Download As PDF";
+            this.btnConvertPDF.UseVisualStyleBackColor = true;
+            this.btnConvertPDF.Click += new System.EventHandler(this.btnConvertPDF_Click);
             // 
-            // textBox1
+            // txtShowReportName
             // 
-            this.textBox1.Location = new System.Drawing.Point(336, 8);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(730, 24);
-            this.textBox1.TabIndex = 2;
+            this.txtShowReportName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtShowReportName.Location = new System.Drawing.Point(228, 5);
+            this.txtShowReportName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtShowReportName.Multiline = true;
+            this.txtShowReportName.Name = "txtShowReportName";
+            this.txtShowReportName.Size = new System.Drawing.Size(488, 17);
+            this.txtShowReportName.TabIndex = 2;
             // 
             // ReportView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 718);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(718, 467);
+            this.Controls.Add(this.txtShowReportName);
+            this.Controls.Add(this.btnConvertPDF);
             this.Controls.Add(this.dataGridReportView);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ReportView";
             this.Text = "ReportView";
             this.Load += new System.EventHandler(this.ReportView_Load);
@@ -82,7 +89,8 @@ namespace DIUTask.admin
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridReportView;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnConvertPDF;
+        private System.Windows.Forms.TextBox txtShowReportName;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
