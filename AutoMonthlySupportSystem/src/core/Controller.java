@@ -58,6 +58,7 @@ public class Controller extends SwingWorker<Void, String> implements Core {
      * @param usedSize
      * @param freeSize
      * @param backupSize
+     *
      * @return
      */
     private int updateFinalSizeOfTableSpace(String tableSpaceFileName, int usedSize, int freeSize, int backupSize) {
@@ -195,43 +196,45 @@ public class Controller extends SwingWorker<Void, String> implements Core {
             boolean check = true;
             ResultSet set = data.getDataFromSQL(con, lList.SELECT_TABLE_UPTO_16);
             while (set.next()) {
-                Connection connection = con;
-                String tableName = set.getString(1);
-                ResultSet rs = data.getDataFromSQL(connection, lList.getTableScript(tableName));
-                while (rs.next()) {
-                    firePropertyChange("writeConsole", null, "> TABLE == " + tableName + "\n");
-                    String tableScript = data.getTableScript(connection, tableName);
-                    String indexScript = data.getIndexScriptByTableName(connection, tableName);
+                if (set.getString(1).length() < 27) {
+                    Connection connection = con;
+                    String tableName = set.getString(1);
+                    ResultSet rs = data.getDataFromSQL(connection, lList.getTableScript(tableName));
+                    while (rs.next()) {
+                        firePropertyChange("writeConsole", null, "> TABLE == " + tableName + "\n");
+                        String tableScript = data.getTableScript(connection, tableName);
+                        String indexScript = data.getIndexScriptByTableName(connection, tableName);
 
-                    if (!tableScript.contains("BLOB")) {
-                        int loc = tableScript.indexOf("INITIAL") + 8;
-                        int endLoc = tableScript.indexOf("NEXT");
-                        String tempStr = tableScript.substring(loc, (endLoc - 1));
-                        tableScript = tableScript.replace(tempStr, "16000");
-                        // Start script rebuild
-                        if (data.updateSQL(connection, lList.getTableRenameScript(tableName))) {
-                            firePropertyChange("writeConsole", null, "> Table name change to " + tableName + "_X\n");
-                            if (data.updateSQL(connection, tableScript)) {
-                                firePropertyChange("writeConsole", null, "> Carete new table --!\n");
-                                if (data.updateSQL(connection, lList.getInsertOneTblToAnotherScript(tableName, tableName + "_X"))) {
-                                    firePropertyChange("writeConsole", null, "> Update data one table to another.\n");
-                                    if (data.updateSQL(connection, lList.getDeleteTableScript(tableName + "_X"))) {
-                                        System.out.println("> Table deleted " + tableName + "_X");
-                                        firePropertyChange("writeConsole", null, "> Table deleted " + tableName + "_X\n");
-                                        if (indexScript.length() > 5) {
-                                            if (data.updateSQL(connection, indexScript)) {
-                                                firePropertyChange("writeConsole", null, "> Create new index --!\n\n");
+                        if (!tableScript.contains("BLOB")) {
+                            int loc = tableScript.indexOf("INITIAL") + 8;
+                            int endLoc = tableScript.indexOf("NEXT");
+                            String tempStr = tableScript.substring(loc, (endLoc - 1));
+                            tableScript = tableScript.replace(tempStr, "16000");
+                            // Start script rebuild
+                            if (data.updateSQL(connection, lList.getTableRenameScript(tableName))) {
+                                firePropertyChange("writeConsole", null, "> Table name change to " + tableName + "_X\n");
+                                if (data.updateSQL(connection, tableScript)) {
+                                    firePropertyChange("writeConsole", null, "> Carete new table --!\n");
+                                    if (data.updateSQL(connection, lList.getInsertOneTblToAnotherScript(tableName, tableName + "_X"))) {
+                                        firePropertyChange("writeConsole", null, "> Update data one table to another.\n");
+                                        if (data.updateSQL(connection, lList.getDeleteTableScript(tableName + "_X"))) {
+                                            System.out.println("> Table deleted " + tableName + "_X");
+                                            firePropertyChange("writeConsole", null, "> Table deleted " + tableName + "_X\n");
+                                            if (indexScript.length() > 5) {
+                                                if (data.updateSQL(connection, indexScript)) {
+                                                    firePropertyChange("writeConsole", null, "> Create new index --!\n\n");
+                                                }
+                                            } else {
+                                                firePropertyChange("writeConsole", null, "> No index of this table --!\n\n");
                                             }
-                                        } else {
-                                            firePropertyChange("writeConsole", null, "> No index of this table --!\n\n");
                                         }
                                     }
                                 }
                             }
-                        }
 
-                    } else {
-                        firePropertyChange("writeConsole", null, "$ This table work with Image.\n\n");
+                        } else {
+                            firePropertyChange("writeConsole", null, "$ This table work with Image.\n\n");
+                        }
                     }
                 }
                 check = false;
@@ -263,6 +266,7 @@ public class Controller extends SwingWorker<Void, String> implements Core {
      * This function work in backround by using Thred when main window runing.
      *
      * @return
+     *
      * @throws Exception
      */
     @Override
@@ -278,8 +282,8 @@ public class Controller extends SwingWorker<Void, String> implements Core {
         firePropertyChange("writeConsole", null, "> INDEX Update Processing ...\n");
         updateTableIndex(OraDbConnection.connection());
         firePropertyChange("writeConsole", null, "> All INDEX Update ...\n");
-        //rebuildTableScript(OraDbConnection.connection());
-        //firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
+        rebuildTableScript(OraDbConnection.connection());
+        firePropertyChange("writeConsole", null, "> All TABLE Update ...\n");
         return null;
     }
 
