@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DIUTask.core;
 using DIUTask.publicUser;
 using DIUTask.student;
+using System.IO;
 
 namespace DIUTask.admin
 {
@@ -140,6 +141,36 @@ namespace DIUTask.admin
             DataTable table = new DataTable();
             table.Load(new AdminService().viewMainUploadedFileList());
             new ReportView(table, "Main Certificate File Uploaded List").Show();
+        }
+
+        private void AdminView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCheckData_Click(object sender, EventArgs e)
+        {
+            //openFileDialogBox.ShowDialog();
+            folderBrowserDialog.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+            {
+                textShowDrivePath.Text=folderBrowserDialog.SelectedPath;
+
+
+                // get the file attributes for file or directory
+                FileAttributes attr = File.GetAttributes(folderBrowserDialog.SelectedPath);
+
+                if (attr.HasFlag(FileAttributes.Directory))
+                    textShowStatus.Text="Its a directory";
+                else
+                    textShowStatus.Text = "Its a file";
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
